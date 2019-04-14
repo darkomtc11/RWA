@@ -1,0 +1,2 @@
+rxjs: interval, range, Subject, Observable, fromEvent, from, forkJoin, timer, zip
+operators: take, filter, map, takeUntil, sampleTime, debounceTime, switchMap, pairwise, scan

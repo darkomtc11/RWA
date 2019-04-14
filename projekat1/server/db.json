@@ -1,0 +1,22 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "darkomtc",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123321",
+      "email": "darkomtc11@gmail.com",
+      "loginToken": "11"
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "firstName": "first2",
+      "lastName": "last2",
+      "email": "user2@gmail.com",
+      "password": "123321",
+      "loginToken": "22"
+    }
+  ]
+}

@@ -2,11 +2,7 @@ import { loader } from './loader';
 
 export class Partial {
   protected _references: Partial[];
-  constructor(protected _tag: string, protected _template: string) {
-  }
-
-  getTag() {
-    return this._tag;
+  constructor(protected _template: string) {
   }
 
   getBaseTemplate() {
@@ -22,6 +18,10 @@ export class Partial {
         resolve(template);
       });
     });
+  }
+
+  alterTemplate(doc){
+    loader.execAfterLoad(this, doc);
   }
 
 

@@ -1,21 +1,14 @@
-import { Start } from "./public/start/start";
-import { User } from "./public/user/user";
 import { Partial } from '../framework/partial';
+import { auth } from './services/authService';
 
-
-(async function () {
-  let t = new Start();
-  let startTag = document.querySelector('start-region');
-  let template = await t.getTemplate();
-  startTag.innerHTML = template;
-  if (document.location.pathname == '/') {
-    
+export class Index extends Partial {
+  constructor() {
+    super('index.html');
   }
-  else {
-    let t = new User();
-    let startTag = document.querySelector('partial-region');
-    let template = await t.getTemplate();
-    startTag.innerHTML = template;
+  private siteName = 'Projekat 1';
+  private authenticated: boolean = auth.isAuthenticated();
+  logout = {
+    click: () => auth.logout()
   }
-})();
-
+  private currentUser = auth.currentUser;
+}

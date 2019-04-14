@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/app.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -18,11 +18,14 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    index:'./public/start/start.html',
     contentBase: [
       path.join(__dirname, "src"),
+      path.join(__dirname, "src/assets"),
       path.join(__dirname, "src/public/start"),
       path.join(__dirname, "src/public/user"),
+      path.join(__dirname, "src/public/error"),
+      path.join(__dirname, "src/public/register"),
+      path.join(__dirname, "src/public/login"),
     ],
     port: 8080,
     historyApiFallback: {

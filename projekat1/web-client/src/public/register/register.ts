@@ -1,9 +1,9 @@
 import { Partial } from '../../../framework/partial';
 
-export class Start extends Partial {
+export class Register extends Partial {
 
   constructor() {
-    super('start.html');
+    super('register.html');
   }
   
 }

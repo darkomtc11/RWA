@@ -1,12 +1,11 @@
 import { loader } from './loader';
 
 export class Partial {
-  protected _references: Partial[];
-  constructor(protected _template: string) {
+  constructor(protected _templateURI: string, private _path: string) {
   }
 
   getBaseTemplate() {
-    return fetch('http://localhost:8080/' + this._template).then(res => {
+    return fetch('http://localhost:8080/' + this._templateURI).then(res => {
       return res.text();
     });
   }
@@ -18,6 +17,10 @@ export class Partial {
         resolve(template);
       });
     });
+  }
+
+  getPath(){
+    return this._path;
   }
 
   alterTemplate(doc){

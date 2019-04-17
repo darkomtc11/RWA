@@ -17,6 +17,15 @@
       "email": "user2@gmail.com",
       "password": "123321",
       "loginToken": "22"
+    },
+    {
+      "username": "darkomtc1",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123ASDasd",
+      "confirmPassword": "123ASDasd",
+	  "loginToken": "5d3536fc-dbe4-4051-bb04-f0302d132220",
+      "id": 3
     }
   ]
 }

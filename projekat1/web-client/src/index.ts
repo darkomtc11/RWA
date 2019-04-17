@@ -3,7 +3,7 @@ import { auth } from './services/authService';
 
 export class Index extends Partial {
   constructor() {
-    super('index.html');
+    super('index.html', '/');
   }
   private siteName = 'Projekat 1';
   private authenticated: boolean = auth.isAuthenticated();

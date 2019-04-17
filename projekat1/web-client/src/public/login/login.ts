@@ -4,22 +4,32 @@ import { auth } from '../../services/authService';
 export class Login extends Partial {
 
   constructor() {
-    super('login.html');
+    super('login.html', '/login');
   }
 
   loginForm = {
     submit: (event) => {
       event.preventDefault();
-      let form: any = document.getElementById('loginForm');
-      let data = new FormData(form);
+      const form: any = document.getElementById('loginForm');
+      const data = new FormData(form);
 
-      var user = {
+      const user = {
         username: '',
         password: ''
       };
 
       data.forEach((value, key) => { user[key] = value });
-      auth.login(user.username, user.password);
+      auth.login(user.username, user.password, (errorMessage) => {
+        if (errorMessage) {
+          this.showError(errorMessage);
+        }
+      });
+    }
+  }
+
+  showError(errorMessage) {
+    if (errorMessage) {
+      document.getElementById('errorMessage').innerText = errorMessage;
     }
   }
 

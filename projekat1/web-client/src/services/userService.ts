@@ -10,38 +10,31 @@ class userDbService extends dbService {
   }
 
   getByUsername(username: string): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create(obs => {
       this.get().pipe<User>(filter(x => x.username === username)).toPromise().then(res => {
-        if (res)
-        {
-          observer.next(res);
-          observer.complete();
+        if (res) {
+          obs.next(res);
+          obs.complete();
         }
-        else
-        {
-          observer.error('Username or password incorrect.');
-          observer.complete();
+        else {
+          obs.error('Username or password incorrect.');
         }
-      });
-    })
+      }).catch(err => console.error(err));
+    });
   }
 
-
-  getCurrentUser(token: string): Observable<any> {
-    return Observable.create(observer => {
+  getByToken(token: string): Observable<any> {
+    return Observable.create(obs => {
       this.get().pipe<User>(filter(x => x.loginToken === token)).toPromise().then(res => {
-        if (res)
-        {
-          observer.next(res);
-          observer.complete();
+        if (res) {
+          obs.next(res);
+          obs.complete();
         }
-        else
-        {
-          observer.error('Username or password incorrect.');
-          observer.complete();
+        else {
+          obs.error('No user with such token.');
         }
-      });
-    })
+      }).catch(err => console.error(err));
+    });
   }
 }
 

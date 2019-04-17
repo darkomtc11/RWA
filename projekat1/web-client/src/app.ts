@@ -6,16 +6,7 @@ import { auth } from "./services/authService";
 
 
 (function () {
-  if (auth.isAuthenticated())
-    auth.setCurrentUser(() => {
-      router.loadIndex();
-      router.navigateTo(document.location.pathname);
-    });
-  else {
-    router.loadIndex();
-    router.navigateTo(document.location.pathname);
-  }
-
+  auth.setCurrentUser(() => router.loadIndex(() => router.navigateTo(document.location.pathname)));
 })();
 
 window.onpopstate = function (e) {

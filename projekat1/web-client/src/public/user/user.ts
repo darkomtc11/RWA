@@ -7,7 +7,7 @@ export class User extends Partial {
   private lastName:string = 'Mitic';
 
   constructor() {
-    super('user.html');
+    super('user.html', '/user');
   }
   
 }

@@ -1,6 +1,6 @@
 import { router } from "../src/router";
 
-const safeEval = require('safe-eval');
+const safeEval = require('safer-eval');
 
 class Loader {
   _scope = null;
@@ -43,7 +43,8 @@ class Loader {
   private loadAttrIf(): string {
     let doc = this.parser.parseFromString(this._template, "text/html");
 
-    doc.querySelectorAll('[if]').forEach(el => {
+    let elems: NodeListOf<HTMLElement> = doc.querySelectorAll('[if]');
+    elems.forEach(el => {
       let cond = el.attributes.getNamedItem('if').value;
       let b = safeEval(cond, this._scope);
       if (b) {
@@ -60,17 +61,19 @@ class Loader {
   }
 
   private loadAttrNavigateTo() {
-    this._document.querySelectorAll('[navigate-to]').forEach(el => {
+    let elems: NodeListOf<HTMLElement> = this._document.querySelectorAll('[navigate-to]');
+    elems.forEach(el => {
       let urlPath = el.attributes.getNamedItem('navigate-to').value;
+      el.style.cursor = 'pointer';
       el.addEventListener('click', () => {
-
         router.navigateTo(urlPath);
       });
     });
   }
 
   private loadAttrEvSubmit() {
-    this._document.querySelectorAll('[ev-submit]').forEach(el => {
+    let elems: NodeListOf<HTMLElement> = this._document.querySelectorAll('[ev-submit]')
+    elems.forEach(el => {
       let handler = el.attributes.getNamedItem('ev-submit').value;
       el.addEventListener('submit',
         safeEval(handler, this._scope)
@@ -79,7 +82,8 @@ class Loader {
   }
 
   private loadAttrEvClick() {
-    this._document.querySelectorAll('[ev-click]').forEach(el => {
+    let elems: NodeListOf<HTMLElement> =this._document.querySelectorAll('[ev-click]')
+    elems.forEach(el => {
       let handler = el.attributes.getNamedItem('ev-click').value;
       el.addEventListener('click',
         safeEval(handler, this._scope)

@@ -2,19 +2,18 @@
 <div class="row d-flex justify-content-center">
   <div class="col-md-6">
     <div class="card">
-      <h5 class="card-header">Login</h5>
+      <h5 class="card-header">Login <small>or <span navigate-to='/register' class="text-primary">register</span></small></h5>
       <small class="text-danger" id="errorMessageLabel"></small>
       <div class="card-body">
         <form ev-submit='loginForm.submit' id='loginForm'>
           <div class="form-group">
-            <label>Username</label>
-            <input type="text" class="form-control" name="username" placeholder="Enter username">
+            <input type="text" class="form-control" name="username" placeholder="Username">
           </div>
           <div class="form-group">
-            <label for="password">Password</label>
             <input type="password" class="form-control" name="password" placeholder="Password">
           </div>
           <button type="submit" class="btn btn-primary">Login</button>
+          <small class="text-danger" id="errorMessage"></small>
         </form>
       </div>
     </div>

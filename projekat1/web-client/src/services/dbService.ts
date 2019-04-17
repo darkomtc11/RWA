@@ -1,41 +1,37 @@
 import { environments } from "../environments";
 import { Observable } from 'rxjs';
-import { User } from "../models/user";
 
-export class dbService {
+export abstract class dbService {
   constructor(protected _resource) {
 
   }
 
-  get(): Observable<User> {
+  get(): Observable<any> {
     return Observable.create(obs => {
-      fetch(`${environments.serverApiUrl}/${this._resource}`).then(res => {
-        return res.json();
-      }).then(data => {
-        data.forEach(element => {
-          obs.next(element);
-        });
-        obs.complete();
-      });
+      fetch(`${environments.serverApiUrl}/${this._resource}`)
+        .then(res => res.json())
+        .then(data => {
+          data.forEach(element => {
+            obs.next(element);
+          });
+          obs.complete();
+        }).catch(err => obs.error(err));
     });
   }
 
   getById(id: number): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create(obs => {
       fetch(`${environments.serverApiUrl}/${this._resource}/${id}`)
-        .then(response => {
-          return response.json()
-        })
+        .then(res => res.json())
         .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
+          obs.next(data);
+          obs.complete();
+        }).catch(err => obs.error(err));
     });
   }
 
   add(model: any): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create(obs => {
       fetch(`${environments.serverApiUrl}/${this._resource}`, {
         method: 'POST',
         headers: {
@@ -43,17 +39,16 @@ export class dbService {
         },
         body: JSON.stringify(model)
       })
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
+          obs.next(data);
+          obs.complete();
+        }).catch(err => obs.error(err));
     });
   }
 
   updateById(id: number, model: any, patch: boolean = true): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create(obs => {
       fetch(`${environments.serverApiUrl}/${this._resource}/${id}`, {
         method: patch ? 'PATCH' : 'PUT',
         headers: {
@@ -61,26 +56,24 @@ export class dbService {
         },
         body: JSON.stringify(model)
       })
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
+          obs.next(data);
+          obs.complete();
+        }).catch(err => obs.error(err));
     });
   }
 
   removeById(id: number): Observable<any> {
-    return Observable.create(observer => {
+    return Observable.create(obs => {
       fetch(`${environments.serverApiUrl}/${this._resource}/${id}`, {
         method: 'DELETE'
       })
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
-          observer.next(data);
-          observer.complete();
-        })
-        .catch(err => observer.error(err));
+          obs.next(data);
+          obs.complete();
+        }).catch(err => obs.error(err));
     });
   }
 }

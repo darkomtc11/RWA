@@ -1,7 +1,8 @@
 import { getPartial } from "./partialsMap";
+import { Partial } from "../framework/partial";
 
 class Router {
-  public async navigateTo(path: string, reload: boolean = false) {
+  public navigateTo(path: string, reload: boolean = false) {
     if (reload)
       this.loadIndex(() => this.loadPage(path));
     else
@@ -18,7 +19,6 @@ class Router {
   }
 
   private async loadPage(path) {
-    console.log('loadovanje straniceeee');
     const p = getPartial(path);
     const template = await p.getTemplate();
 

@@ -1,6 +1,5 @@
 <div class="col-12 col-sm-6">
   <div class="card mt-2 mx-1">
-
     <span class="card-header bg-info text-light d-flex align-items-center flex-column font-weight-bold">
       <div>
         <span class="small">({team1.shortName})</span>
@@ -13,11 +12,8 @@
         {finalFraction==4?'QUARTERFINALS':finalFraction==2?'SEMIFINALS':finalFraction==1?'FINALS':''}
         ({subNumber}/{tournament.format})</div>
       <div if='tournament.qualifier'>QUALIFIERS MATCH ({subNumber}/{tournament.format})</div>
-      <div>{ended?team1Score+':'+team2Score:'TBD'}</div>   
+      <div>{ended?team1Score+':'+team2Score:'TBD'}</div>
       <div>{helper.dateTimePresenter(startTime)}</div>
-
     </div>
   </div>
-
-
 </div>

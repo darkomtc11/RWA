@@ -1,8 +1,8 @@
 import { dbService } from './dbService';
 import { environments } from '../environments';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { User } from '../models/user';
-import { filter, take, subscribeOn } from 'rxjs/operators';
+import { filter, take, subscribeOn, flatMap } from 'rxjs/operators';
 
 class userDbService extends dbService<User> {
   constructor() {
@@ -10,29 +10,17 @@ class userDbService extends dbService<User> {
   }
 
   getByUsername(username: string): Promise<User> {
-    return new Promise((res, rej) => {
-      this.get().pipe(take(1), filter<User>(x => x.username === username)).subscribe(user => {
-        if (user) {
-          res(user);
-        }
-        else {
-          rej('Username or password incorrect.');
-        }
-      });
-    });
+
+    return from(fetch(`${environments.serverApiUrl}/${this._resource}?username=${username}`))
+      .pipe(flatMap(response => response.json())).toPromise();
+
   }
 
   getByToken(token: string): Promise<User> {
-    return new Promise((res, rej) => {
-      this.get().pipe<User>(filter(x => x.loginToken === token)).subscribe(user => {
-        if (user) {
-          res(user);
-        }
-        else {
-          rej('No user with such token.');
-        }
-      });
-    });
+
+    return from(fetch(`${environments.serverApiUrl}/${this._resource}?loginToken=${token}`))
+      .pipe(flatMap(response => response.json())).toPromise();
+
   }
 }
 

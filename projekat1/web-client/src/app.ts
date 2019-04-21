@@ -1,14 +1,12 @@
 import { router } from "./router";
-import { userService } from "./services/userService";
-import { map, filter } from "rxjs/operators";
-import { User } from "./models/user";
 import { auth } from "./services/authService";
-import { leagueService } from "./services/leagueService";
+import { templateCache } from "../framework/cachedTemplate";
 
 
 (function () {
-  auth.setCurrentUser(() => router.loadIndex(() => router.navigateTo(document.location.pathname)));
-
+  templateCache.cache().then(() =>
+    auth.setCurrentUser(() =>
+        router.navigateTo(document.location.pathname, true)));
 
 })();
 

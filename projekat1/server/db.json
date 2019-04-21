@@ -59,6 +59,13 @@
       "format": 2,
       "qualifier": true,
       "leagueId": 1
+    },
+    {
+      "id": 3,
+      "name": "All stars",
+      "format": 3,
+      "qualifier": false,
+      "leagueId": 3
     }
   ],
   "matches": [
@@ -93,7 +100,8 @@
       "team2Score":9,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     },
     {
       "id": 2,
@@ -126,7 +134,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     },
     {
       "id": 3,
@@ -159,7 +168,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
     ,
     {
@@ -193,7 +203,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
     ,
     {
@@ -227,7 +238,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":3,
+      "leagueId":3
     }
     ,
     {
@@ -261,7 +273,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -295,7 +308,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
     ,
     {
@@ -329,7 +343,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -363,7 +378,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
     ,
     {
@@ -397,7 +413,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -431,7 +448,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -465,7 +483,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
     ,
     {
@@ -499,7 +518,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -533,7 +553,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":1
+      "tournamentId":1,
+      "leagueId":1
     }
     ,
     {
@@ -567,7 +588,8 @@
       "team2Score":16,
       "finalFraction":4,
       "subNumber":1,
-      "tournamentId":2
+      "tournamentId":2,
+      "leagueId":1
     }
   ]
 }

@@ -1,6 +1,6 @@
 import { loader } from './loader';
 import { Helper, helper } from './helper';
-import { cachedTemplate } from './cachedTemplate';
+import { templateCache } from './cachedTemplate';
 
 
 export class Partial {
@@ -17,13 +17,13 @@ export class Partial {
 
   getTemplate(): Promise<string> {
     return new Promise<string>(resolve => {
-      let cached = cachedTemplate[this._templateURI];
+      let cached = templateCache[this._templateURI];
       if (cached) {
         resolve(loader.execPartial(this, cached));
       }
       else {
         this.getBaseTemplate().then(template => {
-          cachedTemplate[this._templateURI] = template;
+          templateCache[this._templateURI] = template;
           resolve(loader.execPartial(this, template));
         });
       }
@@ -32,13 +32,13 @@ export class Partial {
 
   getFraction(): Promise<ChildNode> {
     return new Promise<ChildNode>(resolve => {
-      let cached = cachedTemplate[this._templateURI];
+      let cached = templateCache[this._templateURI];
       if (cached) {
         resolve(loader.execFraction(this, cached));
       }
       else {
         this.getBaseTemplate().then(template => {
-          cachedTemplate[this._templateURI] = template;
+          templateCache[this._templateURI] = template;
           resolve(loader.execFraction(this, template));
         });
       }

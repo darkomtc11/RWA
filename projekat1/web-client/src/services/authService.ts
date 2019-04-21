@@ -17,9 +17,10 @@ class authService {
 
   public login(username: string, password: string, error: Function) {
     userService.getByUsername(username).then(res => {
-      if (res.password === password) {
-        this.currentUser = res;
-        localStorage.setItem('token', res.loginToken);
+      let user = res[0];
+      if (user.password === password) {
+        this.currentUser = user;
+        localStorage.setItem('token', user.loginToken);
         router.navigateTo('/', true);
       }
       else {
@@ -33,8 +34,8 @@ class authService {
   public register(user: RegisterUser, error: Function) {
     user.loginToken = guid();
     userService.add(user).subscribe(res => {
-      this.currentUser = res;
-      localStorage.setItem('token', res.loginToken);
+      this.currentUser = res[0];
+      localStorage.setItem('token', this.currentUser.loginToken);
       router.navigateTo('/', true);
     }, err => {
       error(err);
@@ -46,7 +47,7 @@ class authService {
       let token = localStorage.getItem('token');
       if (token)
         userService.getByToken(token).then(res => {
-          this.currentUser = res;
+          this.currentUser = res[0];
           next();
         }, error => {
           console.error(error);

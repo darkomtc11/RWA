@@ -25,8 +25,7 @@ export class Tournament extends Partial {
     return matchService.getByTournament(this);
   }
 
-  async populateLeague(leagues) {
+  populateLeague(leagues: League[]) {
     this.league = leagues.filter(x => x.id == this.leagueId)[0];
-    //this.league = await leagueService.getById(this.leagueId).toPromise();
   }
 }

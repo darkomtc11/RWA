@@ -5,7 +5,6 @@ import { Login } from "./public/views/login/login";
 import { Register } from "./public/views/register/register";
 import { Error as err } from "./public/views/error/error";
 import { auth } from "./services/authService";
-import { router } from "./router";
 
 const partialsMap = {
   'root': { partial: Index, allowAuth: true, allowUnauth: true },
@@ -16,7 +15,7 @@ const partialsMap = {
   'error': { partial: err, allowAuth: true, allowUnauth: true },
 }
 
-export function getPartial(path) {
+export function getPartial(path): Partial<any> {
   let page = partialsMap[path];
 
   if (!page)

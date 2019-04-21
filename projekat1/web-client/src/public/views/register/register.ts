@@ -1,9 +1,11 @@
-import { Partial } from '../../../framework/partial';
-import { auth } from '../../services/authService';
+import { Partial } from '../../../../framework/partial';
+import { auth } from '../../../services/authService';
+import { RegisterUser } from '../../../models/user';
 
 export class Register extends Partial {
 
-  user = {
+  user: RegisterUser = {
+    id: -1,
     username: '',
     firstName: '',
     lastName: '',
@@ -16,13 +18,13 @@ export class Register extends Partial {
     super('register.html', '/register');
   }
 
-  form: HTMLFormElement;
+  registerForm: HTMLFormElement;
 
-  private registerForm = {
-    submit: (event) => {
+  private events = {
+    submitRegisterForm: (event) => {
       event.preventDefault();
-      this.form = (document.getElementById('registerForm') as HTMLFormElement);
-      const data = new FormData(this.form);
+      this.registerForm = (document.getElementById('registerForm') as HTMLFormElement);
+      const data = new FormData(this.registerForm);
 
       data.forEach((value, key) => { this.user[key] = value });
       if (this.validateForm())

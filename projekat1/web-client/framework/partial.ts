@@ -1,29 +1,57 @@
 import { loader } from './loader';
+import { Helper, helper } from './helper';
+import { cachedTemplate } from './cachedTemplate';
+
 
 export class Partial {
-  constructor(protected _templateURI: string, private _path: string) {
+  helper: Helper = helper;
+
+  constructor(protected _templateURI: string, private _path: string = '') {
   }
 
   getBaseTemplate() {
-    return fetch('http://localhost:8080/' + this._templateURI).then(res => {
+    return fetch('/' + this._templateURI).then(res => {
       return res.text();
     });
   }
 
-  getTemplate() {
+  getTemplate(): Promise<string> {
     return new Promise<string>(resolve => {
-      this.getBaseTemplate().then(template => {
-        template = loader.exec(this, template);
-        resolve(template);
-      });
+      let cached = cachedTemplate[this._templateURI];
+      if (cached) {
+        resolve(loader.execPartial(this, cached));
+      }
+      else {
+        this.getBaseTemplate().then(template => {
+          cachedTemplate[this._templateURI] = template;
+          resolve(loader.execPartial(this, template));
+        });
+      }
     });
   }
 
-  getPath(){
+  getFraction(): Promise<ChildNode> {
+    return new Promise<ChildNode>(resolve => {
+      let cached = cachedTemplate[this._templateURI];
+      if (cached) {
+        resolve(loader.execFraction(this, cached));
+      }
+      else {
+        this.getBaseTemplate().then(template => {
+          cachedTemplate[this._templateURI] = template;
+          resolve(loader.execFraction(this, template));
+        });
+      }
+    });
+  }
+
+  
+
+  getPath() {
     return this._path;
   }
 
-  alterTemplate(doc){
+  alterTemplate(doc) {
     loader.execAfterLoad(this, doc);
   }
 

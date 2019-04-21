@@ -1,9 +1,9 @@
-import { Index } from ".";
-import { Start } from "./public/start/start";
-import { User } from "./public/user/user";
-import { Login } from "./public/login/login";
-import { Register } from "./public/register/register";
-import { Error as err } from "./public/error/error";
+import { Index } from "./public/views/index/index";
+import { Start } from "./public/views/start/start";
+import { User } from "./public/views/user/user";
+import { Login } from "./public/views/login/login";
+import { Register } from "./public/views/register/register";
+import { Error as err } from "./public/views/error/error";
 import { auth } from "./services/authService";
 import { router } from "./router";
 

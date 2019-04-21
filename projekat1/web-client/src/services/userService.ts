@@ -2,38 +2,36 @@ import { dbService } from './dbService';
 import { environments } from '../environments';
 import { Observable } from 'rxjs';
 import { User } from '../models/user';
-import { filter } from 'rxjs/operators';
+import { filter, take, subscribeOn } from 'rxjs/operators';
 
-class userDbService extends dbService {
+class userDbService extends dbService<User> {
   constructor() {
     super(environments.usersResourceUrl)
   }
 
-  getByUsername(username: string): Observable<any> {
-    return Observable.create(obs => {
-      this.get().pipe<User>(filter(x => x.username === username)).toPromise().then(res => {
-        if (res) {
-          obs.next(res);
-          obs.complete();
+  getByUsername(username: string): Promise<User> {
+    return new Promise((res, rej) => {
+      this.get().pipe(take(1), filter<User>(x => x.username === username)).subscribe(user => {
+        if (user) {
+          res(user);
         }
         else {
-          obs.error('Username or password incorrect.');
+          rej('Username or password incorrect.');
         }
-      }).catch(err => console.error(err));
+      });
     });
   }
 
-  getByToken(token: string): Observable<any> {
-    return Observable.create(obs => {
-      this.get().pipe<User>(filter(x => x.loginToken === token)).toPromise().then(res => {
-        if (res) {
-          obs.next(res);
-          obs.complete();
+  getByToken(token: string): Promise<User> {
+    return new Promise((res, rej) => {
+      this.get().pipe<User>(filter(x => x.loginToken === token)).subscribe(user => {
+        if (user) {
+          res(user);
         }
         else {
-          obs.error('No user with such token.');
+          rej('No user with such token.');
         }
-      }).catch(err => console.error(err));
+      });
     });
   }
 }

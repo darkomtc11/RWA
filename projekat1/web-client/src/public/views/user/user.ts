@@ -1,4 +1,4 @@
-import { Partial } from '../../../framework/partial';
+import { Partial } from '../../../../framework/partial';
 
 export class User extends Partial {
 

@@ -24,8 +24,550 @@
       "lastName": "Mitic",
       "password": "123ASDasd",
       "confirmPassword": "123ASDasd",
-	  "loginToken": "5d3536fc-dbe4-4051-bb04-f0302d132220",
+      "loginToken": "5d3536fc-dbe4-4051-bb04-f0302d132220",
       "id": 3
+    }
+  ],
+  "leagues": [
+    {
+      "id": 1,
+      "name": "League 1",
+      "host": "ESEA"
+    },
+    {
+      "id": 2,
+      "name": "League 2",
+      "host": "Valve"
+    },
+    {
+      "id": 3,
+      "name": "League 3",
+      "host": "FACEIT"
+    }
+  ],
+  "tournaments": [
+    {
+      "id": 1,
+      "name": "something",
+      "format": 1,
+      "qualifier": false,
+      "leagueId": 1
+    },
+    {
+      "id": 2,
+      "name": "something different",
+      "format": 2,
+      "qualifier": true,
+      "leagueId": 1
+    }
+  ],
+  "matches": [
+    {
+      "id": 1,
+      "matchId": "match-1",
+      "team1": {
+        "name": "tim1",
+        "shortName": "t1",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim2",
+        "shortName": "t2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-05-11T10:20:30Z",
+      "ended":false,
+      "team1Score":16,
+      "team2Score":9,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    },
+    {
+      "id": 2,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    },
+    {
+      "id": 3,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
+    }
+    ,
+    {
+      "id": 4,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
+    }
+    ,
+    {
+      "id": 5,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 6,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 7,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
+    }
+    ,
+    {
+      "id": 8,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 9,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
+    }
+    ,
+    {
+      "id": 10,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 11,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 12,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
+    }
+    ,
+    {
+      "id": 13,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 14,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":1
+    }
+    ,
+    {
+      "id": 15,
+      "matchId": "match-2",
+      "team1": {
+        "name": "tim3",
+        "shortName": "t3",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "name": "tim4",
+        "shortName": "t4",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime":"2019-03-15T10:20:30Z",
+      "ended":true,
+      "team1Score":8,
+      "team2Score":16,
+      "finalFraction":4,
+      "subNumber":1,
+      "tournamentId":2
     }
   ]
 }

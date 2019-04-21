@@ -18,6 +18,7 @@ class Router {
   }
 
   private async loadPage(path) {
+    console.log('loadovanje straniceeee');
     const p = getPartial(path);
     const template = await p.getTemplate();
 
@@ -30,7 +31,7 @@ class Router {
     const r = getPartial('root');
     const p = getPartial(path);
 
-    r.alterTemplate(document);
+    //r.alterTemplate(document);
     p.alterTemplate(document.querySelector('partial-region'));
   }
 }

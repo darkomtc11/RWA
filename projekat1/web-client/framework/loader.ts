@@ -1,6 +1,7 @@
 import { router } from "../src/router";
+import { Partial } from "./partial";
 
-const safeEval = require('safer-eval');
+const saferEval = require('safer-eval');
 
 class Loader {
   _scope = null;
@@ -8,7 +9,7 @@ class Loader {
   _document = null;
   parser = new DOMParser();
 
-  public exec(scope, template) {
+  public execPartial(scope: Partial, template: string): string {
     this._scope = scope;
     this._template = template;
 
@@ -16,6 +17,15 @@ class Loader {
     template = this.loadAttrIf();
 
     return template;
+  }
+
+  public execFraction(scope: Partial, template: string): ChildNode {
+    let html = this.execPartial(scope, template);
+
+    let outer = document.createElement('template');
+    html = html.trim(); // Never return a text node of whitespace as the result
+    outer.innerHTML = html;
+    return outer.content.firstChild;
   }
 
   public execAfterLoad(scope, document) {
@@ -33,7 +43,7 @@ class Loader {
       m = reg.exec(this._template);
       if (m) {
         let prop = m[1].replace(/\s/g, '');
-        this._template = this._template.replace(m[0], safeEval(prop, this._scope));
+        this._template = this._template.replace(m[0], saferEval(prop, this._scope));
       }
     }
     while (m);
@@ -46,7 +56,7 @@ class Loader {
     let elems: NodeListOf<HTMLElement> = doc.querySelectorAll('[if]');
     elems.forEach(el => {
       let cond = el.attributes.getNamedItem('if').value;
-      let b = safeEval(cond, this._scope);
+      let b = saferEval(cond, this._scope);
       if (b) {
         el.classList.add('d-block');
         el.classList.remove('d-none');
@@ -62,6 +72,7 @@ class Loader {
 
   private loadAttrNavigateTo() {
     let elems: NodeListOf<HTMLElement> = this._document.querySelectorAll('[navigate-to]');
+
     elems.forEach(el => {
       let urlPath = el.attributes.getNamedItem('navigate-to').value;
       el.style.cursor = 'pointer';
@@ -76,17 +87,17 @@ class Loader {
     elems.forEach(el => {
       let handler = el.attributes.getNamedItem('ev-submit').value;
       el.addEventListener('submit',
-        safeEval(handler, this._scope)
+        saferEval(handler, this._scope)
       );
     });
   }
 
   private loadAttrEvClick() {
-    let elems: NodeListOf<HTMLElement> =this._document.querySelectorAll('[ev-click]')
+    let elems: NodeListOf<HTMLElement> = this._document.querySelectorAll('[ev-click]')
     elems.forEach(el => {
       let handler = el.attributes.getNamedItem('ev-click').value;
       el.addEventListener('click',
-        safeEval(handler, this._scope)
+        saferEval(handler, this._scope)
       );
     });
   }

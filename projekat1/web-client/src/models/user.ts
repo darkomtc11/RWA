@@ -1,6 +1,18 @@
-export class User {
+export interface RegisterUser {
+  id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  confirmPassword: string;
+  loginToken: string;
+}
 
-  constructor(public id = 0, public username = '', public firstName = '', public lastName = '', public email = '', public password = '', public loginToken = '') {
-
-  }
+export interface User {
+  id: number;
+  username: string;
+  firstName: string;
+  lastName: string;
+  password: string;
+  loginToken: string;
 }

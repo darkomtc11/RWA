@@ -1,20 +1,21 @@
 import { getPartial } from "./partialsMap";
 import { Partial } from "../framework/partial";
+import { Root } from "./public/views/root/root";
 
 class Router {
   public navigateTo(path: string, reload: boolean = false) {
     if (reload)
-      this.loadIndex(() => this.loadPage(path));
+      this.loadRoot(() => this.loadPage(path));
     else
       this.loadPage(path);
   }
 
-  public async loadIndex(next: Function) {
-    const r = getPartial('root');
+  public async loadRoot(next: Function) {
+    const r = new Root();
     const template = await r.getTemplate();
     
-    document.documentElement.innerHTML = template;
-    r.alterTemplate(document);
+    document.querySelector('root').innerHTML = template;
+    r.alterTemplate(document.querySelector('root'));
     next();
   }
 

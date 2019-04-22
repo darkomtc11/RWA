@@ -6,11 +6,12 @@ import { templateCache } from './cachedTemplate';
 export class Partial {
   helper: Helper = helper;
 
+
   constructor(protected _templateURI: string, private _path: string = '') {
   }
 
   getBaseTemplate() {
-    return fetch('/' + this._templateURI).then(res => {
+    return fetch( this._templateURI).then(res => {
       return res.text();
     });
   }

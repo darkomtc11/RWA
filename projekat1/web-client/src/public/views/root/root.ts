@@ -1,9 +1,9 @@
 import { Partial } from '../../../../framework/partial';
 import { auth } from '../../../services/authService';
 
-export class Index extends Partial {
+export class Root extends Partial {
   constructor() {
-    super('index.html', '/asd');
+    super('root.html');
   }
   private siteName = 'Projekat 1';
   private authenticated: boolean = auth.isAuthenticated();

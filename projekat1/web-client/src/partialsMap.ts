@@ -1,4 +1,3 @@
-import { Index } from "./public/views/index/index";
 import { Start } from "./public/views/start/start";
 import { User } from "./public/views/user/user";
 import { Login } from "./public/views/login/login";
@@ -8,7 +7,6 @@ import { auth } from "./services/authService";
 import { Partial } from "../framework/partial";
 
 const partialsMap = {
-  'root': { partial: Index, allowAuth: true, allowUnauth: true },
   '/': { partial: Start, allowAuth: true, allowUnauth: false },
   '/user': { partial: User, allowAuth: true, allowUnauth: false },
   '/login': { partial: Login, allowAuth: false, allowUnauth: true },

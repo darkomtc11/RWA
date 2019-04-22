@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/app.ts',
+  entry: './src/index.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -11,6 +11,7 @@ module.exports = {
       }
     ]
   },
+  
   resolve: {
     extensions: ['.ts', '.js']
   },
@@ -21,7 +22,7 @@ module.exports = {
     contentBase: [
       path.join(__dirname, "src"),
       path.join(__dirname, "src/assets"),
-      path.join(__dirname, "src/public/views/index"),
+      path.join(__dirname, "src/public/views/root"),
       path.join(__dirname, "src/public/views/start"),
       path.join(__dirname, "src/public/views/user"),
       path.join(__dirname, "src/public/views/error"),

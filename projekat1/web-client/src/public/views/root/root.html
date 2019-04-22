@@ -1,0 +1,53 @@
+<nav class="navbar navbar-dark bg-primary">
+
+  <!-- <ul class="navbar-nav d-flex flex-row mr-auto">
+    <li class="nav-item">
+      <a class="nav-link">LINK #1</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link">LINK #2</a>
+    </li>
+  </ul> -->
+  <button class="navbar-brand  nav-item nav-link btn" navigate-to='/'>{ siteName }</button>
+  <ul class="navbar-nav flex-row ml-auto">
+
+
+    <li class="nav-item mr-2" if="!authenticated"><button class="btn btn-success" navigate-to='/login'>Login</button></li>
+    <li class="nav-item" if="!authenticated"><button class="btn btn-info" navigate-to='/register'>Register</button>
+    </li>
+
+    <li if="authenticated" class="dropdown mr-2">
+      <a class="nav-link p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <button class="rounded-circle btn btn-secondary p-0 m-0" style="width:30px;height:30px">
+          <i class="fas fa-plus"></i>
+        </button>
+      </a>
+      <div class="dropdown-menu dropdown-menu-right rounded-0 position-absolute" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item">Option 1</a>
+        <a class="dropdown-item">Option 2</a>
+      </div>
+    </li>
+
+    <li if="authenticated" class="dropdown">
+      <a class="nav-link p-0" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <img src="./assets/avatar.png" class="rounded-circle m-0" style="max-width:30px; max-height: 30px">
+      </a>
+      <div class="dropdown-menu dropdown-menu-right rounded-0 position-absolute" aria-labelledby="navbarDropdown">
+        <span class="dropdown-item disabled d-flex justify-content-center">{currentUser.username}</span>
+        <a class="dropdown-item" navigate-to='/user'>Profile</a>
+
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" style="cursor:pointer" ev-click='logout.click'>Logout</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+<div class="container mt-2">
+  <div class="content">
+    <partial-region></partial-region>
+  </div>
+
+
+</div>

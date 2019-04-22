@@ -54,20 +54,22 @@ class Loader {
     let doc = this.parser.parseFromString(this._template, "text/html");
 
     let elems: NodeListOf<HTMLElement> = doc.querySelectorAll('[if]');
-    elems.forEach(el => {
-      let cond = el.attributes.getNamedItem('if').value;
+
+    for (let i = 0; i < elems.length; i++) {
+      let cond = elems[i].attributes.getNamedItem('if').value;
       let b = saferEval(cond, this._scope);
       if (b) {
-        el.classList.add('d-block');
-        el.classList.remove('d-none');
+        elems[i].classList.add('d-block');
+        elems[i].classList.remove('d-none');
       }
       else {
-        el.classList.add('d-none');
-        el.classList.remove('d-block');
+        elems[i].classList.add('d-none');
+        elems[i].classList.remove('d-block');
       }
-    });
+    }
 
     return doc.documentElement.innerHTML;
+
   }
 
   private loadAttrNavigateTo() {

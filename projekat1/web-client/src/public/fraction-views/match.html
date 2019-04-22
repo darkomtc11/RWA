@@ -1,4 +1,4 @@
-<div class="col-12 col-sm-6">
+<div class="col-12 col-sm-6" ev-click="events.openMatch">
   <div class="card mt-2 mx-1">
     <span class="card-header bg-info text-light d-flex align-items-center flex-column font-weight-bold">
       <div>
@@ -7,13 +7,19 @@
         <span class="small">({team2.shortName})</span>
       </div>
     </span>
-    <div class="d-flex align-items-center flex-column">
-      <div if='!tournament.qualifier'>
-        {finalFraction==4?'QUARTERFINALS':finalFraction==2?'SEMIFINALS':finalFraction==1?'FINALS':''}
-        ({subNumber}/{tournament.format})</div>
-      <div if='tournament.qualifier'>QUALIFIERS MATCH ({subNumber}/{tournament.format})</div>
-      <div>{ended?team1Score+':'+team2Score:'TBD'}</div>
-      <div>{helper.dateTimePresenter(startTime)}</div>
+    <div class="card-body">
+      <div class="d-flex align-items-center flex-column">
+        <div if='!tournament.qualifier'>
+          {finalFraction==4?'QUARTERFINALS':finalFraction==2?'SEMIFINALS':finalFraction==1?'FINALS':''}
+          ({subNumber}/{tournament.format})</div>
+        <div if='tournament.qualifier'>QUALIFIERS MATCH ({subNumber}/{tournament.format})</div>
+        <div>{ended?team1Score+':'+team2Score:'TBD'}</div>
+        <div>{helper.dateTimePresenter(startTime)}</div>
+      </div>
+
+    </div>
+    <div class="card-footer p-0">
+      <button class="btn btn-info m-0" ev-click="events.openMatch">a</button>
     </div>
   </div>
 </div>

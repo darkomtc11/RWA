@@ -7,9 +7,9 @@ export class Login extends Partial {
     super('login.html', '/login');
   }
 
-  loginForm: HTMLFormElement;
+  private loginForm: HTMLFormElement;
 
-  events = {
+  private events = {
     submitLoginForm: (event) => {
       event.preventDefault();
       this.loginForm = (document.getElementById('loginForm') as HTMLFormElement);
@@ -29,7 +29,7 @@ export class Login extends Partial {
     }
   }
 
-  showError(errorMessage) {
+  private showError(errorMessage) {
     if (errorMessage) {
       document.getElementById('errorMessage').innerText = errorMessage;
     }

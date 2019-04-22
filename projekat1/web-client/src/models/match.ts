@@ -47,4 +47,11 @@ export class Match extends Partial {
     this.league = leagues.filter(x => x.id == this.leagueId)[0];
   }
 
+  events={
+    openMatch: (event)=>{
+      event.target.innerHTML = this.id;
+      console.log(this.id);
+    }
+  }
+
 }

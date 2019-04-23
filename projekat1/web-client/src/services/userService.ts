@@ -1,10 +1,10 @@
 import { dbService } from './dbService';
 import { environments } from '../environments';
-import { Observable, from } from 'rxjs';
+import { from } from 'rxjs';
 import { User } from '../models/user';
-import { filter, take, subscribeOn, flatMap } from 'rxjs/operators';
+import { flatMap } from 'rxjs/operators';
 
-class userDbService extends dbService<User> {
+class UserService extends dbService<User> {
   constructor() {
     super(environments.usersResourceUrl)
   }
@@ -24,4 +24,4 @@ class userDbService extends dbService<User> {
   }
 }
 
-export const userService = new userDbService();
+export const userService = new UserService();

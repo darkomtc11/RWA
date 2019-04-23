@@ -3,9 +3,9 @@ import { auth } from '../../../services/authService';
 
 export class Root extends Partial {
   constructor() {
-    super('root.html');
+    super(Root._template.cloneNode(true) as HTMLElement);
   }
-  private siteName = 'Projekat 1';
+  siteName = 'Projekat 1';
   private authenticated: boolean = auth.isAuthenticated();
   logout = {
     click: () => auth.logout()

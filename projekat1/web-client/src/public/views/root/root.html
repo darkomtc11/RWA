@@ -1,3 +1,4 @@
+<title>aaaaaaaaa</title>
 <nav class="navbar navbar-dark bg-primary">
 
   <!-- <ul class="navbar-nav d-flex flex-row mr-auto">
@@ -8,11 +9,12 @@
       <a class="nav-link">LINK #2</a>
     </li>
   </ul> -->
-  <button class="navbar-brand  nav-item nav-link btn" navigate-to='/'>{ siteName }</button>
+  <button class="navbar-brand  nav-item nav-link btn" navigate-to='/'>{{{ siteName }}}</button>
   <ul class="navbar-nav flex-row ml-auto">
 
 
-    <li class="nav-item mr-2" if="!authenticated"><button class="btn btn-success" navigate-to='/login'>Login</button></li>
+    <li class="nav-item mr-2" if="!authenticated"><button class="btn btn-success" navigate-to='/login'>Login</button>
+    </li>
     <li class="nav-item" if="!authenticated"><button class="btn btn-info" navigate-to='/register'>Register</button>
     </li>
 
@@ -35,7 +37,7 @@
         <img src="./assets/avatar.png" class="rounded-circle m-0" style="max-width:30px; max-height: 30px">
       </a>
       <div class="dropdown-menu dropdown-menu-right rounded-0 position-absolute" aria-labelledby="navbarDropdown">
-        <span class="dropdown-item disabled d-flex justify-content-center">{currentUser.username}</span>
+        <span class="dropdown-item disabled d-flex justify-content-center">{{{ currentUser.username }}}</span>
         <a class="dropdown-item" navigate-to='/user'>Profile</a>
 
         <div class="dropdown-divider"></div>

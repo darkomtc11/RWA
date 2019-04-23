@@ -6,7 +6,7 @@ import { userService } from '../../../services/userService';
 export class Register extends Partial {
 
   private user: RegisterUser = {
-    id: -1,
+    id: undefined,
     username: '',
     firstName: '',
     lastName: '',
@@ -16,7 +16,7 @@ export class Register extends Partial {
   };
 
   constructor() {
-    super('register.html', '/register');
+    super(Register._template.cloneNode(true) as HTMLElement, '/register');
   }
 
   private registerForm: HTMLFormElement;

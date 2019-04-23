@@ -1,8 +1,6 @@
 import { environments } from "../environments";
-import { Observable, from, timer, Observer } from 'rxjs';
-import { ajax } from 'rxjs/ajax'
-import { flatMap, map, mergeMap, concatMap } from "rxjs/operators";
-import { User } from "../public/views/user/user";
+import { Observable, from } from 'rxjs';
+import { flatMap } from "rxjs/operators";
 
 export abstract class dbService<T> {
   constructor(protected _resource) {

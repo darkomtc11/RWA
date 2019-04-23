@@ -1,10 +1,9 @@
 import { userService } from './userService';
-import { filter } from 'rxjs/operators';
 import { User, RegisterUser } from '../models/user';
-import { router } from '../router';
+import { router } from '../../framework/router';
 import { v4 as guid } from 'uuid';
 
-class authService {
+class AuthService {
 
   currentUser: User = {
     username: '',
@@ -34,8 +33,8 @@ class authService {
   public register(user: RegisterUser, error: Function) {
     user.loginToken = guid();
     userService.add(user).subscribe(res => {
-      this.currentUser = res[0];
-      localStorage.setItem('token', this.currentUser.loginToken);
+      this.currentUser = res;
+      localStorage.setItem('token', res.loginToken);
       router.navigateTo('/', true);
     }, err => {
       error(err);
@@ -77,4 +76,4 @@ class authService {
   }
 }
 
-export const auth = new authService();
+export const auth = new AuthService();

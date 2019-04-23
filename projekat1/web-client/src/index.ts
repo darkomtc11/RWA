@@ -1,19 +1,18 @@
-import { router } from "./router";
+import { router } from "../framework/router";
 import { auth } from "./services/authService";
-import { templateCache } from "../framework/cachedTemplate";
+import { appInit } from "../framework/app";
 
+(async function () {
+  await appInit.fetchPartials();
 
-(function () {
-  templateCache.cache().then(() =>
-    auth.setCurrentUser(() =>
-        router.navigateTo(document.location.pathname, true)));
+  auth.setCurrentUser(() => {
+    router.navigateTo(document.location.pathname, true)
+  });
 
 })();
 
 window.onpopstate = function (e) {
   if (e.state) {
-    document.querySelector("partial-region").innerHTML = e.state.html;
-    document.title = e.state.pageTitle;
-    router.alterOnly(document.location.pathname);
+    router.navigateTo(e.state.path, true);
   }
 };

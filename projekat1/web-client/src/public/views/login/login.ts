@@ -4,7 +4,7 @@ import { auth } from '../../../services/authService';
 export class Login extends Partial {
 
   constructor() {
-    super('login.html', '/login');
+    super(Login._template.cloneNode(true) as HTMLElement, '/login');
   }
 
   private loginForm: HTMLFormElement;

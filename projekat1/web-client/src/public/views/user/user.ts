@@ -7,7 +7,7 @@ export class User extends Partial {
   private lastName:string = 'Mitic';
 
   constructor() {
-    super('user.html', '/user');
+    super(User._template.cloneNode(true) as HTMLElement, '/user');
   }
   
 }

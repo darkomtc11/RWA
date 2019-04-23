@@ -1,7 +1,6 @@
 import { Team } from "./team";
 import { Tournament } from "./tournament";
 import { Partial } from "../../framework/partial";
-import { tournamentService } from "../services/tournamentService";
 import { League } from "./league";
 
 export class Match extends Partial {
@@ -22,7 +21,7 @@ export class Match extends Partial {
 
 
   constructor(match: Match) {
-    super("match.html");
+    super(Match._template.cloneNode(true) as HTMLElement);
     this.id = match.id;
     this.matchId = match.matchId;
     this.subNumber = match.subNumber;

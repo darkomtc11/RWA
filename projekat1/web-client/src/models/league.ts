@@ -7,7 +7,7 @@ export class League extends Partial {
   host: string;
 
   constructor(league: League) {
-    super("league.html")
+    super(League._template.cloneNode(true) as HTMLElement)
     this.id = league.id;
     this.name = league.name;
     this.host = league.host;

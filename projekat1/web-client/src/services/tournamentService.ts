@@ -23,37 +23,45 @@ class TournamentService extends dbService<Tournament> {
     ));
   }
 
-  get(): Observable<Tournament[]> {
+  get(init: boolean = true): Observable<Tournament[]> {
     return zip(super.get(), leagueService.get()).pipe(map(([t, l]) => {
       return t.map(x => {
         let tournament = new Tournament(x as Tournament);
         tournament.populateLeague(l as League[]);
+        if (init)
+          tournament.init();
         return tournament;
       });
     }));
   }
 
-  getById(id: number): Observable<Tournament> {
+  getById(id: number, init: boolean = true): Observable<Tournament> {
     return zip(super.getById(id), leagueService.get()).pipe(map(([t, l]) => {
       let tournament = new Tournament(t as Tournament);
       tournament.populateLeague(l as League[]);
+      if (init)
+        tournament.init();
       return tournament;
     }));
   }
 
-  add(tournament: Tournament): Observable<Tournament> {
+  add(tournament: Tournament, init: boolean = true): Observable<Tournament> {
     return zip(super.add(tournament), leagueService.get()).pipe(map(([t, l]) => {
       let tournament = new Tournament(t as Tournament);
       tournament.populateLeague(l as League[]);
+      if (init)
+        tournament.init();
       return tournament;
     }));
   }
 
-  updateById(id: number, tournament: Tournament, patch: boolean = true): Observable<Tournament> {
+  updateById(id: number, tournament: Tournament, init: boolean = true, patch: boolean = true): Observable<Tournament> {
 
     return zip(super.updateById(id, tournament, patch), leagueService.get()).pipe(map(([t, l]) => {
       let tournament = new Tournament(t as Tournament);
       tournament.populateLeague(l as League[]);
+      if (init)
+        tournament.init();
       return tournament;
     }));
   }

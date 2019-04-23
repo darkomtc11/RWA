@@ -2,9 +2,9 @@ import { Partial } from '../../../../framework/partial';
 
 export class Error extends Partial {
 
-  errorMessage;
-  constructor(errorMessage:string) {
-    super('error.html', '/error');
+
+  constructor(private errorMessage:string='aaaaaaa') {
+    super(Error._template.cloneNode(true) as HTMLElement, '/error');
     this.errorMessage = errorMessage;
   }
   

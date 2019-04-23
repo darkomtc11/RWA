@@ -1,11 +1,11 @@
+import { Partial } from "../../framework/partial";
 import { League } from "./league";
 import { matchService } from "../services/matchService";
-import { leagueService } from "../services/leagueService";
-import { Partial } from "../../framework/partial";
+
 
 export class Tournament extends Partial {
   constructor(tournament: Tournament) {
-    super("tournament.html");
+    super(Tournament._template.cloneNode(true) as HTMLElement);
     this.id = tournament.id;
     this.name = tournament.name;
     this.qualifier = tournament.qualifier;

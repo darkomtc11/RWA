@@ -28,7 +28,7 @@ module.exports = {
       path.join(__dirname, "src/public/views/error"),
       path.join(__dirname, "src/public/views/register"),
       path.join(__dirname, "src/public/views/login"),
-      path.join(__dirname, "src/public/fraction-views"),
+      path.join(__dirname, "src/public/model-views"),
     ],
     port: 8080,
     historyApiFallback: {

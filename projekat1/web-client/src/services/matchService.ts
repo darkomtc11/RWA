@@ -1,7 +1,7 @@
 import { dbService } from './dbService';
 import { environments } from '../environments';
-import { Observable, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, zip, combineLatest, from } from 'rxjs';
+import { map, filter, toArray, withLatestFrom, delay, combineAll, flatMap } from 'rxjs/operators';
 import { Match } from '../models/match';
 import { Tournament } from '../models/tournament';
 import { tournamentService } from './tournamentService';
@@ -14,42 +14,40 @@ class MatchService extends dbService<Match> {
     super(environments.matchesResourceUrl);
   }
 
-  getByTournament(tournament: Tournament): Observable<Match[]> {
-    return super.get().pipe(map<Match[], Match[]>(x => {
-      return x.filter(m => m.tournamentId == tournament.id).map(m => {
-        m.tournament = tournament;
-        return m;
-      })
+  getByTournament(tournament: Tournament, init: boolean = true): Observable<Match> {
+    return super.get().pipe(filter(x => x.tournamentId === tournament.id), flatMap(async m => {
+      let match = new Match(m as Match);
+      await match.populateTournament();
+      if (init)
+        match.init();
+      return match;
     }));
   }
 
-  getByLeague(league: League): Observable<Match[]> {
-    return super.get().pipe(map<Match[], Match[]>(x => {
-      return x.filter(m => m.leagueId == league.id).map(m => {
-        m.league = league;
-        return m;
-      })
+  getByLeague(league: League, init: boolean = true): Observable<Match> {
+    return super.get().pipe(filter(x => x.leagueId === league.id), flatMap(async m => {
+      let match = new Match(m as Match);
+      await match.populateTournament();
+      if (init)
+        match.init();
+      return match;
     }));
   }
 
-  get(init: boolean = true): Observable<Match[]> {
-    return zip(super.get(), tournamentService.get(), leagueService.get()).pipe(map(([m, t, l]) => {
-      return m.map(x => {
-        let match = new Match(x as Match);
-        match.populateTournament(t as Tournament[]);
-        match.populateLeague(l as League[]);
-        if (init)
-          match.init();
-        return match;
-      });
+  get(init: boolean = true): Observable<Match> {
+    return super.get().pipe(flatMap(async m => {
+      let match = new Match(m as Match);
+      await match.populateTournament();
+      if (init)
+        match.init();
+      return match;
     }));
   }
 
   getById(id: number, init: boolean = true): Observable<Match> {
-    return zip(super.getById(id), tournamentService.get(), leagueService.get()).pipe(map(([m, t, l]) => {
+    return super.getById(id).pipe(flatMap(async m => {
       let match = new Match(m as Match);
-      match.populateTournament(t as Tournament[]);
-      match.populateLeague(l as League[]);
+      await match.populateTournament();
       if (init)
         match.init();
       return match;
@@ -57,10 +55,9 @@ class MatchService extends dbService<Match> {
   }
 
   add(match: Match, init: boolean = true): Observable<Match> {
-    return zip(super.add(match), tournamentService.get(), leagueService.get()).pipe(map(([m, t, l]) => {
+    return super.add(match).pipe(flatMap(async m => {
       let match = new Match(m as Match);
-      match.populateTournament(t as Tournament[]);
-      match.populateLeague(l as League[]);
+      await match.populateTournament();
       if (init)
         match.init();
       return match;
@@ -68,10 +65,9 @@ class MatchService extends dbService<Match> {
   }
 
   updateById(id: number, match: Match, init: boolean = true, patch: boolean = true): Observable<Match> {
-    return zip(super.updateById(id, match, patch), tournamentService.get(), leagueService.get()).pipe(map(([m, t, l]) => {
+    return super.updateById(id, match, patch).pipe(flatMap(async m => {
       let match = new Match(m as Match);
-      match.populateTournament(t as Tournament[]);
-      match.populateLeague(l as League[]);
+      await match.populateTournament();
       if (init)
         match.init();
       return match;

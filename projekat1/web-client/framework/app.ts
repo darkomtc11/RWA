@@ -23,19 +23,17 @@ import { Match } from "../src/models/match";
 ]
 
 class AppInit {
-
-  private parser = new DOMParser();
-
   fetchPartials() {
     let promisses = [];
 
     PARTIALS.map(p => {
       promisses.push(fetch(p.url).then(res => res.text()).then(html => {
         p.item._template = document.createElement('partial');
-        let doc = this.parser.parseFromString(html, "text/html");
-        doc.body.childNodes.forEach(cn => {
-          p.item._template.appendChild(cn);
-        });
+        // let doc = this.parser.parseFromString(html, "text/html");
+        // doc.body.childNodes.forEach(cn => {
+        //   p.item._template.appendChild(cn);
+        // });
+        p.item._template.innerHTML = html;
       }));
     })
 

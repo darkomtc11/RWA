@@ -7,14 +7,19 @@ export abstract class dbService<T> {
 
   }
 
-  get(): Observable<T[]> {
-    return from(fetch(`${environments.serverApiUrl}/${this._resource}`))
-      .pipe(flatMap(response => response.json()))
+  get(): Observable<T> {
+    return Observable.create(obs => {
+      fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json()).then(data => {
+        data.map(x => {
+          obs.next(x);
+        });
+        obs.complete();
+      });
+    });
   }
 
   getById(id: number): Observable<T> {
-    return from(fetch(`${environments.serverApiUrl}/${this._resource}/${id}`))
-      .pipe(flatMap(response => response.json()));
+    return from(fetch(`${environments.serverApiUrl}/${this._resource}/${id}`).then(res => res.json()));
   }
 
   add(model: T): Observable<T> {
@@ -24,7 +29,7 @@ export abstract class dbService<T> {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(model)
-    })).pipe(flatMap(response => response.json()));
+    }).then(res => res.json()));
   }
 
   public updateById(id: number, model: T, patch: boolean = true): Observable<T> {
@@ -34,7 +39,7 @@ export abstract class dbService<T> {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(model)
-    })).pipe(flatMap(response => response.json()));
+    }).then(res => res.json()));
   }
 
   removeById(id: number): Observable<any> {
@@ -43,4 +48,3 @@ export abstract class dbService<T> {
     }))
   }
 }
-

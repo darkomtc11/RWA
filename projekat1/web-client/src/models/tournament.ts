@@ -1,6 +1,7 @@
 import { Partial } from "../../framework/partial";
 import { League } from "./league";
 import { matchService } from "../services/matchService";
+import { leagueService } from "../services/leagueService";
 
 
 export class Tournament extends Partial {
@@ -21,11 +22,21 @@ export class Tournament extends Partial {
   leagueId: number;
   league: League;
 
+  events={
+    loadMatches:undefined
+  }
+
   getMatches() {
     return matchService.getByTournament(this);
   }
 
-  populateLeague(leagues: League[]) {
-    this.league = leagues.filter(x => x.id == this.leagueId)[0];
+  populateLeague() {
+    return new Promise(res=>{
+      leagueService.getById(this.leagueId, false).subscribe(l => {
+        this.league = l;
+        res();
+      });
+    })
+      
   }
 }

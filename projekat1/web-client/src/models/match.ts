@@ -2,6 +2,8 @@ import { Team } from "./team";
 import { Tournament } from "./tournament";
 import { Partial } from "../../framework/partial";
 import { League } from "./league";
+import { tournamentService } from "../services/tournamentService";
+import { Observable } from "rxjs";
 
 export class Match extends Partial {
   id: number;
@@ -34,20 +36,20 @@ export class Match extends Partial {
     this.team2Score = match.team2Score;
     this.tournamentId = match.tournamentId;
     this.tournament = match.tournament;
-    this.leagueId = match.leagueId;
-    this.league = match.league;
   }
 
-  populateTournament(torunaments: Tournament[]) {
-    this.tournament = torunaments.filter(x => x.id == this.tournamentId)[0];
+  populateTournament() {
+    return new Promise(res=>{
+      tournamentService.getById(this.tournamentId, false).subscribe(t => {
+        this.tournament = t;
+        res();
+      });
+    })
+    
   }
 
-  populateLeague(leagues: League[]) {
-    this.league = leagues.filter(x => x.id == this.leagueId)[0];
-  }
-
-  events={
-    openMatch: (event)=>{
+  events = {
+    openMatch: (event) => {
       event.target.innerHTML = this.id;
       console.log(this.id);
     }

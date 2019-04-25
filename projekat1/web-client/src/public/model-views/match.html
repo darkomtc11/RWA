@@ -1,12 +1,12 @@
 <div class="col-12 col-sm-6">
   <div class="card mt-2 mx-1">
-    <span class="card-header bg-info text-light d-flex align-items-center flex-column font-weight-bold">
+    <div class="card-header bg-info text-light d-flex align-items-center flex-column font-weight-bold">
       <div>
         <span class="small">({{{team1.shortName}}})</span>
         {{{team1.name}}} <span class="small">vs</span> {{{team2.name}}}
         <span class="small">({{{team2.shortName}}})</span>
       </div>
-    </span>
+    </div>
     <div class="card-body">
       <div class="d-flex align-items-center flex-column">
         <div if='!tournament.qualifier'>
@@ -15,6 +15,7 @@
         <div if='tournament.qualifier'>QUALIFIERS MATCH ({{{subNumber}}}/{{{tournament.format}}})</div>
         <div>{{{ended?team1Score+':'+team2Score:'TBD'}}}</div>
         <div>{{{helper.dateTimePresenter(startTime)}}}</div>
+        {{{tournament.league.host}}}
       </div>
 
     </div>

@@ -9,13 +9,13 @@ class LeagueService extends dbService<League> {
     super(environments.leaguesResourceUrl);
   }
 
-  get(init: boolean = true): Observable<League[]> {
-    return super.get().pipe(map(x => x.map(league => {
-      let l = new League(league);
+  get(init: boolean = true): Observable<League> {
+    return super.get().pipe(map(x => {
+      let l = new League(x);
       if (init)
         l.init();
       return l;
-    })));
+    }));
   }
 
   getById(id: number, init: boolean = true): Observable<League> {

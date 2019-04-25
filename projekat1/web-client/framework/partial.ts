@@ -22,13 +22,6 @@ export class Partial {
     //this.loadChildPartials();
   }
 
-  refreshMoustache() {
-    this.moustaches.forEach(m => {
-      const prop = m.getAttribute('for');
-      m.innerHTML = saferEval(prop, this);
-    })
-  }
-
   get template() {
     return this._template;
   }
@@ -38,7 +31,7 @@ export class Partial {
 
     //let reg = /\{(.*?)\}/;//{{{ xxxxxx.yy.z }}}
     //let reg = /(?<=% \{\{\{ )(.*)(?= \}\}\} )/
-    let reg = /{{{?\s*.*?\s*}?}}///{{{asd}}}
+    let reg = /{{{?\s*.*?\s*}}}///{{{asd}}}
     let m;
     do {
       m = reg.exec(html);
@@ -50,8 +43,29 @@ export class Partial {
       }
     }
     while (m);
+
+
+    reg = /{{?\s*.*?\s*}}///{{ asd }}
+    do {
+      m = reg.exec(html);
+      if (m) {
+        let prop = m[0].slice(3, -3).trim();//.replace(/\s/g, '');
+
+        html = html.replace(m[0], saferEval(prop, this));
+      }
+    }
+    while (m);
+
+
     this._template.innerHTML = html;
     this.moustaches = this._template.querySelectorAll("ex-moustache");
+  }
+
+  refreshMoustache() {
+    this.moustaches.forEach(m => {
+      const prop = m.getAttribute('for');
+      m.innerHTML = saferEval(prop, this);
+    })
   }
 
   loadAttrIf() {
@@ -115,5 +129,9 @@ export class Partial {
 
   getPath() {
     return this._path;
+  }
+
+  $(query) {
+    return document.querySelector(query);
   }
 }

@@ -20,7 +20,7 @@ class AuthService {
       if (user.password === password) {
         this.currentUser = user;
         localStorage.setItem('token', user.loginToken);
-        router.navigateTo('/', true);
+        router.navigateTo('/', true, true);
       }
       else {
         error('Username or password incorrect.');
@@ -35,7 +35,7 @@ class AuthService {
     userService.add(user).subscribe(res => {
       this.currentUser = res;
       localStorage.setItem('token', res.loginToken);
-      router.navigateTo('/', true);
+      router.navigateTo('/', true, true);
     }, err => {
       error(err);
     });
@@ -72,7 +72,7 @@ class AuthService {
       password: ''
     };
     localStorage.removeItem('token');
-    router.navigateTo('/', true);
+    router.navigateTo('/', true, true);
   }
 }
 

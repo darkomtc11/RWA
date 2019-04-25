@@ -1,5 +1,6 @@
 import { Helper, helper } from './helper';
 import { router } from './router';
+import { fromEvent } from 'rxjs';
 //import { PARTIALS } from '../src/PARTIALS';
 
 const saferEval = require('safer-eval');
@@ -133,5 +134,10 @@ export class Partial {
 
   $(query) {
     return document.querySelector(query);
+  }
+
+  render(container) {
+    for (let i = 0; i < this.template.children.length; i++)
+      container.append(this.template.children[i]);
   }
 }

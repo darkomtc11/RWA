@@ -1,34 +1,37 @@
 <title>Register</title>
-<div class="row d-flex justify-content-center">
-  <div class="col-md-6">
-    <div class="card">
-      <h5 class="card-header">Register <small>or <span navigate-to='/login' class="text-primary">login</span></small></h5>
-      <small class="text-danger" id="errorMessageLabel"></small>
-      <div class="card-body">
-        <form ev-submit='events.submitRegisterForm' id='registerForm'>
-          <div class="form-group">
-            <input type="text" class="form-control" name="username" placeholder="Username">
-            <small class="text-danger" for='username'></small>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="firstName" placeholder="First name">
-            <small class="text-danger" for='firstName'></small>
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" name="lastName" placeholder="Last name">
-            <small class="text-danger" for='lastName'></small>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="password" placeholder="Password">
-            <small class="text-danger" for='password'></small>
-          </div>
-          <div class="form-group">
-            <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm password">
-            <small class="text-danger" for='confirmPassword'></small>
-          </div>
-          <button type="submit" class="btn btn-primary">Register</button>
-          <small class="text-danger" id="errorMessage"></small>
-        </form>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-lg-6 col-md-7 col-12">
+      <div class="card">
+        <h5 class="card-header">Register <small>or <span navigate-to='/login' class="text-primary">login</span></small>
+        </h5>
+        <small class="text-danger" id="errorMessageLabel"></small>
+        <div class="card-body">
+          <form ev-submit='events.submitRegisterForm' id='registerForm'>
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username">
+              <small class="text-danger" for='username'></small>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="firstName" placeholder="First name">
+              <small class="text-danger" for='firstName'></small>
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="lastName" placeholder="Last name">
+              <small class="text-danger" for='lastName'></small>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password">
+              <small class="text-danger" for='password'></small>
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="confirmPassword" placeholder="Confirm password">
+              <small class="text-danger" for='confirmPassword'></small>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+            <small class="text-danger" id="errorMessage"></small>
+          </form>
+        </div>
       </div>
     </div>
   </div>

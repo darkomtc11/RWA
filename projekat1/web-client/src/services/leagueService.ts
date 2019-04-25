@@ -11,7 +11,7 @@ class LeagueService extends dbService<League> {
 
   get(init: boolean = true): Observable<League> {
     return super.get().pipe(map(x => {
-      let l = new League(x);
+      let l = new League(x as League);
       if (init)
         l.init();
       return l;

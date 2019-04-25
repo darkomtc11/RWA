@@ -1,7 +1,7 @@
 import { dbService } from './dbService';
 import { environments } from '../environments';
 import { Observable, zip, combineLatest, forkJoin } from 'rxjs';
-import { filter, map, toArray, withLatestFrom, delay, flatMap } from 'rxjs/operators';
+import { filter, map, toArray, withLatestFrom, delay, flatMap, concatMap } from 'rxjs/operators';
 import { Tournament } from '../models/tournament';
 import { League } from '../models/league';
 import { leagueService } from './leagueService';
@@ -13,11 +13,11 @@ class TournamentService extends dbService<Tournament> {
   }
 
   getByLeague(league: League): Observable<Tournament> {
-    return super.get().pipe(filter(x => x.leagueId === league.id));
+    return this.get().pipe(filter<Tournament>(x => x.leagueId === league.id));
   }
 
   get(init: boolean = true): Observable<Tournament> {
-    return super.get().pipe(flatMap(async t => {
+    return super.get().pipe(concatMap(async t => {
       let tournament = new Tournament(t as Tournament);
       await tournament.populateLeague()
       if (init)
@@ -28,7 +28,7 @@ class TournamentService extends dbService<Tournament> {
   }
 
   getById(id: number, init: boolean = true): Observable<Tournament> {
-    return super.getById(id).pipe(flatMap(async t => {
+    return super.getById(id).pipe(concatMap(async t => {
       let tournament = new Tournament(t as Tournament);
       await tournament.populateLeague()
       if (init)
@@ -39,7 +39,7 @@ class TournamentService extends dbService<Tournament> {
   }
 
   add(tournament: Tournament, init: boolean = true): Observable<Tournament> {
-    return super.add(tournament).pipe(flatMap(async t => {
+    return super.add(tournament).pipe(concatMap(async t => {
       let tournament = new Tournament(t as Tournament);
       await tournament.populateLeague()
       if (init)
@@ -50,7 +50,7 @@ class TournamentService extends dbService<Tournament> {
   }
 
   updateById(id: number, tournament: Tournament, init: boolean = true, patch: boolean = true): Observable<Tournament> {
-    return super.updateById(id, tournament, patch).pipe(flatMap(async t => {
+    return super.updateById(id, tournament, patch).pipe(concatMap(async t => {
       let tournament = new Tournament(t as Tournament);
       await tournament.populateLeague()
       if (init)

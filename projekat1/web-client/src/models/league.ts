@@ -1,5 +1,6 @@
 import { tournamentService } from "../services/tournamentService";
 import { Partial } from "../../framework/partial";
+import { matchService } from "../services/matchService";
 
 export class League extends Partial {
   id: number;
@@ -13,8 +14,15 @@ export class League extends Partial {
     this.host = league.host;
   }
 
+  events = {
+    loadTournaments: undefined
+  }
 
   getTournaments() {
     return tournamentService.getByLeague(this);
+  }
+
+  getMatches() {
+    return matchService.getByLeague(this);
   }
 }

@@ -1,6 +1,6 @@
 import { environments } from "../environments";
 import { Observable, from } from 'rxjs';
-import { flatMap } from "rxjs/operators";
+import { flatMap, concatMap, switchMap } from "rxjs/operators";
 
 export abstract class dbService<T> {
   constructor(protected _resource) {
@@ -8,14 +8,17 @@ export abstract class dbService<T> {
   }
 
   get(): Observable<T> {
-    return Observable.create(obs => {
-      fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json()).then(data => {
-        data.map(x => {
-          obs.next(x);
-        });
-        obs.complete();
-      });
-    });
+
+    return from(fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json())).pipe(switchMap<Observable<T>, Observable<T>>(x => x));
+
+    // return Observable.create(obs => {
+    //   fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json()).then(data => {
+    //     data.map(x => {
+    //       obs.next(x);
+    //     });
+    //     obs.complete();
+    //   });
+    // });
   }
 
   getById(id: number): Observable<T> {
@@ -32,7 +35,7 @@ export abstract class dbService<T> {
     }).then(res => res.json()));
   }
 
-  public updateById(id: number, model: T, patch: boolean = true): Observable<T> {
+  updateById(id: number, model: T, patch: boolean = true): Observable<T> {
     return from(fetch(`${environments.serverApiUrl}/${this._resource}/${id}`, {
       method: patch ? 'PATCH' : 'PUT',
       headers: {

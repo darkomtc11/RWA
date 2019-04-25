@@ -12,7 +12,7 @@ export class Login extends Partial {
   private events = {
     submitLoginForm: (event) => {
       event.preventDefault();
-      this.loginForm = (document.getElementById('loginForm') as HTMLFormElement);
+      this.loginForm = (this.$('#loginForm') as HTMLFormElement);
       const data = new FormData(this.loginForm);
 
       const loginInfo = {
@@ -31,7 +31,7 @@ export class Login extends Partial {
 
   private showError(errorMessage) {
     if (errorMessage) {
-      document.getElementById('errorMessage').innerText = errorMessage;
+      this.$('#errorMessage').innerText = errorMessage;
     }
   }
 

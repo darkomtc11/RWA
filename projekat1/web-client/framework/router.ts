@@ -18,11 +18,11 @@ const navigationMap = {
 
 
 class Router {
-  public navigateTo(path: string, reload: boolean = false) {
+  public navigateTo(path: string, reload: boolean = false, forceHistory: boolean = false) {
     if (reload)
       this.loadRoot();
 
-    this.loadPage(path, reload)
+    this.loadPage(path, !reload || forceHistory)
   }
 
   private loadRoot() {
@@ -33,7 +33,7 @@ class Router {
     document.querySelector('root').appendChild(r.template);
   }
 
-  private loadPage(path, reload) {
+  private loadPage(path, forceHistory) {
     const p = this.routePartial(path);
     p.init();
 
@@ -42,23 +42,30 @@ class Router {
       document.querySelector('partial-region').appendChild(el);
     });
 
-    if (!reload)
+    if (forceHistory)
       window.history.pushState({ path: p.getPath() }, document.title, p.getPath());
   }
 
   private routePartial(path): Partial {
     let page = navigationMap[path];
-  
-    if (!page)
+
+    if (!page) {
       return new Error('404 Page not found');
-    else
-      if ((page.allowAuth && auth.isAuthenticated()) || (page.allowUnauth && !auth.isAuthenticated()))
+    }
+    else {
+      if ((page.allowAuth && auth.isAuthenticated()) || (page.allowUnauth && !auth.isAuthenticated())) {
         return new page.partial();
-      else
-        if (auth.isAuthenticated())
+      }
+      else {
+        if (auth.isAuthenticated()) {
           return new Error('401 Unauthorized');
-        else
+        }
+        else {
           return new Login();
+        }
+      }
+    }
+
   }
 }
 

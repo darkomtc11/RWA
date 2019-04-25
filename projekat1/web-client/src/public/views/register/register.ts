@@ -24,7 +24,7 @@ export class Register extends Partial {
   private events = {
     submitRegisterForm: (event) => {
       event.preventDefault();
-      this.registerForm = (document.getElementById('registerForm') as HTMLFormElement);
+      this.registerForm = (this.$('#registerForm') as HTMLFormElement);
       const data = new FormData(this.registerForm);
 
       data.forEach((value, key) => { this.user[key] = value });

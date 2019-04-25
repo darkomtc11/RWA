@@ -6,7 +6,7 @@ import { appInit } from "../framework/app";
   await appInit.fetchPartials();
 
   auth.setCurrentUser(() => {
-    router.navigateTo(document.location.pathname, true)
+    router.navigateTo(document.location.pathname, true, true)
   });
 
 })();

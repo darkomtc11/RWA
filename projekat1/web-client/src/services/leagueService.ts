@@ -2,16 +2,21 @@ import { dbService } from './dbService';
 import { environments } from '../environments';
 import { Observable } from 'rxjs';
 import { map, filter, delay, flatMap } from 'rxjs/operators';
-import { League } from '../models/league';
+import { League } from '../base-models/league';
+import { MatchCard } from '../models/matchCard';
+import { type } from 'os';
+import { LeagueCard } from '../models/leagueCard';
 
-class LeagueService extends dbService<League> {
-  constructor() {
+declare type Klasa = LeagueCard;
+
+class LeagueService extends dbService<League>{
+  constructor(private _leagueType: typeof League) {
     super(environments.leaguesResourceUrl);
   }
 
   get(init: boolean = true): Observable<League> {
     return super.get().pipe(map(x => {
-      let l = new League(x as League);
+      let l = new this._leagueType(x as League, this._leagueType._template);
       if (init)
         l.init();
       return l;
@@ -20,7 +25,7 @@ class LeagueService extends dbService<League> {
 
   getById(id: number, init: boolean = true): Observable<League> {
     return super.getById(id).pipe(map(x => {
-      let l = new League(x);
+      let l = new this._leagueType(x as League, this._leagueType._template);
       if (init)
         l.init();
       return l;
@@ -29,7 +34,7 @@ class LeagueService extends dbService<League> {
 
   add(league: League, init: boolean = true): Observable<League> {
     return super.add(league).pipe(map(x => {
-      let l = new League(x);
+      let l = new this._leagueType(x as League, this._leagueType._template);
       if (init)
         l.init();
       return l;
@@ -38,7 +43,7 @@ class LeagueService extends dbService<League> {
 
   updateById(id: number, league: League, init: boolean = true, patch: boolean = true): Observable<League> {
     return super.updateById(id, league, patch).pipe(map(x => {
-      let l = new League(x);
+      let l = new this._leagueType(x as League, this._leagueType._template);
       if (init)
         l.init();
       return l;
@@ -51,4 +56,5 @@ class LeagueService extends dbService<League> {
 }
 
 
-export const leagueService = new LeagueService();
+export const leagueCardService = new LeagueService(LeagueCard);
+export const leagueService = new LeagueService(League);

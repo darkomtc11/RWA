@@ -1,5 +1,5 @@
-rxjs: interval, range, Subject, fromEvent, forkJoin, timer
+rxjs: interval, range, Subject, fromEvent, forkJoin, 
 rxjs/operators: take, takeUntil, sampleTime, debounceTime, pairwise, scan
 
 used rxjs: Observable, from, zip
-used rxjs/operators: filter, map, concatMap, switchMap,
+used rxjs/operators: filter, map, concatMap, switchMap, timer

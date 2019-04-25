@@ -5,7 +5,7 @@ export class Root extends Partial {
   constructor() {
     super(Root._template.cloneNode(true) as HTMLElement);
   }
-  siteName = 'Projekat 1';
+  siteName = 'eSport Events';
   private authenticated: boolean = auth.isAuthenticated();
   logout = {
     click: () => auth.logout()

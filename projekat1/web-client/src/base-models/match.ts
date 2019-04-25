@@ -1,31 +1,30 @@
-import { Team } from "./team";
 import { Tournament } from "./tournament";
 import { Partial } from "../../framework/partial";
 import { League } from "./league";
 import { tournamentService } from "../services/tournamentService";
 import { Observable } from "rxjs";
+import { Team } from "../interfaces/team";
+import { iMatch } from "../interfaces/iMatch";
 
-export class Match extends Partial {
+export class Match extends Partial implements iMatch {
   id: number;
-  matchId: string;
   subNumber: number;
   team1: Team;
   team2: Team;
   startTime: Date;
   finalFraction: number;
   ended: boolean;
-  team1Score: number[];
-  team2Score: number[];
+  team1Score: number;
+  team2Score: number;
   tournamentId: number;
   tournament: Tournament;
   leagueId: number;
   league: League;
 
 
-  constructor(match: Match) {
-    super(Match._template.cloneNode(true) as HTMLElement);
+  constructor(match: Match, template: HTMLElement) {
+    super(template);
     this.id = match.id;
-    this.matchId = match.matchId;
     this.subNumber = match.subNumber;
     this.team1 = match.team1;
     this.team2 = match.team2;
@@ -39,20 +38,12 @@ export class Match extends Partial {
   }
 
   populateTournament() {
-    return new Promise(res=>{
+    return new Promise(res => {
       tournamentService.getById(this.tournamentId, false).subscribe(t => {
         this.tournament = t;
         res();
       });
     })
-    
-  }
 
-  events = {
-    openMatch: (event) => {
-      event.target.innerHTML = this.id;
-      console.log(this.id);
-    }
   }
-
 }

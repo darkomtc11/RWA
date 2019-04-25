@@ -2,11 +2,19 @@ import { Partial } from "../../framework/partial";
 import { League } from "./league";
 import { matchService } from "../services/matchService";
 import { leagueService } from "../services/leagueService";
+import { iTournament } from "../interfaces/iTorunament";
 
 
-export class Tournament extends Partial {
-  constructor(tournament: Tournament) {
-    super(Tournament._template.cloneNode(true) as HTMLElement);
+export class Tournament extends Partial implements iTournament{
+  id: number;
+  name: string;
+  qualifier: boolean;
+  format: number;
+  leagueId: number;
+  league: League;
+
+  constructor(tournament: Tournament, template: HTMLElement) {
+    super(template);
     this.id = tournament.id;
     this.name = tournament.name;
     this.qualifier = tournament.qualifier;
@@ -15,16 +23,7 @@ export class Tournament extends Partial {
     this.league = tournament.league;
   }
 
-  id: number;
-  name: string;
-  qualifier: boolean;
-  format: number;
-  leagueId: number;
-  league: League;
-
-  events={
-    loadMatches:undefined
-  }
+  
 
   getMatches() {
     return matchService.getByTournament(this);
@@ -37,6 +36,6 @@ export class Tournament extends Partial {
         res();
       });
     })
-      
+ 
   }
 }

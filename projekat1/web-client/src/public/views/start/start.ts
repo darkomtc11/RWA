@@ -1,13 +1,17 @@
 import { Partial } from '../../../../framework/partial';
-import { leagueService } from '../../../services/leagueService';
-import { delay, map, toArray } from 'rxjs/operators';
-import { ajax } from 'rxjs/ajax';
-import { matchService } from '../../../services/matchService';
-import { tournamentService } from '../../../services/tournamentService';
-import { League } from '../../../models/league';
-import { zip, Observable } from 'rxjs';
-import { Match } from '../../../models/match';
-import { Tournament } from '../../../models/tournament';
+import { leagueCardService } from '../../../services/leagueService';
+import { toArray, map, delay } from 'rxjs/operators';
+import { matchCardService } from '../../../services/matchService';
+import { tournamentCardService } from '../../../services/tournamentService';
+
+import { zip, Observable, interval, timer } from 'rxjs';
+
+import { TournamentCard } from '../../../models/tournamentCard';
+import { MatchCard } from '../../../models/matchCard';
+import { LeagueCard } from '../../../models/leagueCard';
+import { League } from '../../../base-models/league';
+import { Tournament } from '../../../base-models/tournament';
+import { router } from '../../../../framework/router';
 
 
 export class Start extends Partial {
@@ -22,42 +26,52 @@ export class Start extends Partial {
   }
 
   load() {
-    zip(leagueService.get().pipe(toArray()), tournamentService.get().pipe(toArray()), matchService.get().pipe(toArray())).subscribe(([L, T, M]) => {
 
-      this.divMatches = this.$("#matches");
-      this.divLeagues = this.$("#leagues");
-      this.divTournaments = this.$("#tournaments");
+    
 
-      L.forEach(x => {
-        x.events.loadTournaments = (event) => {
-          this.loadTournaments(x.getTournaments());
-          this.loadMatches(x.getMatches());
-        }
+    zip(leagueCardService.get().pipe(map(x => x as LeagueCard), toArray()),
+      tournamentCardService.get().pipe(map(x => x as TournamentCard), toArray()),
+      matchCardService.get().pipe(map(x => x as MatchCard), toArray()))
+      .subscribe(([L, T, M]) => {
 
-        x.loadAttrEvClick();
-        x.render(this.divLeagues);
-      });
+        this.divLeagues = this.$("#leagues");
+        this.divTournaments = this.$("#tournaments");
+        this.divMatches = this.$("#matches");
 
-      T.forEach(x => {
-        x.events.loadMatches = (event) => {
-          this.loadMatches(x.getMatches());
-        }
+        this.divLeagues.innerHTML = "";
+        this.divTournaments.innerHTML = "";
+        this.divMatches.innerHTML = "";
 
-        x.loadAttrEvClick();
-        x.render(this.divTournaments);
-      });
 
-      M.forEach(x => {
-        x.render(this.divMatches);
-      });
-    })
+        L.forEach(x => {
+            x.events.loadTournaments = (event) => {
+              this.loadTournaments(x.getTournaments());
+              this.loadMatches(x.getMatches());
+            }
+
+          x.loadAttrEvClick();
+          x.render(this.divLeagues);
+        });
+
+        T.forEach(x => {
+          x.events.loadMatches = (event) => {
+            this.loadMatches(x.getMatches());
+          }
+
+          x.loadAttrEvClick();
+          x.render(this.divTournaments);
+        });
+
+        M.forEach(x => {
+          x.render(this.divMatches);
+        });
+      })
   }
 
-  loadTournaments(tournaments: Observable<Tournament>) {
+  loadTournaments(tournaments: Observable<TournamentCard>) {
     this.divTournaments.innerHTML = "";
     tournaments.subscribe(x => {
       x.events.loadMatches = (event) => {
-        event.target.innerHTML = x.id;
         this.loadMatches(x.getMatches());
       }
 
@@ -66,7 +80,7 @@ export class Start extends Partial {
     })
   }
 
-  loadMatches(matches: Observable<Match>) {
+  loadMatches(matches: Observable<MatchCard>) {
     this.divMatches.innerHTML = "";
     matches.subscribe(x => {
       x.render(this.divMatches);

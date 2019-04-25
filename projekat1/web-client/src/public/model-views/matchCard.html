@@ -7,8 +7,11 @@
         <span class="small">({{{team2.shortName}}})</span>
       </div>
     </div>
-    <div class="card-body">
-      <div class="d-flex align-items-center flex-column">
+    <div class="card-body row no-gutters">
+      <div class="col-md-3">
+        <img style="width:100%;height:100%" src="{{ team1.image }}">
+      </div>
+      <div class="col-md-6 d-flex align-items-center flex-column">
         <div if='!tournament.qualifier'>
           {{{finalFraction==4?'QUARTERFINALS':finalFraction==2?'SEMIFINALS':finalFraction==1?'FINALS':''}}}
           ({{{subNumber}}}/{{{tournament.format}}})</div>
@@ -17,10 +20,12 @@
         <div>{{{helper.dateTimePresenter(startTime)}}}</div>
         {{{tournament.league.host}}}
       </div>
-
+      <div class="col-md-3">
+          <img style="width:100%;height:100%" src="{{ team2.image }}">
+        </div>
     </div>
     <div class="card-footer p-0 d-flex align-items-center flex-column">
-      <button class="btn btn-sm btn-block btn-outline-info m-0" navigate-to="/match?id={{id}}">Open match page</button>
+      <button class="btn btn-sm btn-block btn-outline-info m-0" navigate-to="/match/{{ id }}">Open match page</button>
     </div>
   </div>
 </div>

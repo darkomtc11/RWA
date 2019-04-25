@@ -1,9 +1,15 @@
-<title>User | {{ username }}</title>
-<div class="d-flex  justify-content-center">
-  <div>{{{username}}}</div> <br>
-  {{{  firstName}}}  <br>
+<title>User profile</title>
 
-  {{{   lastName        }}}  <br>
+<div class="container">
+<div class="row">
 
-  {{{lastName}}}  <br>
-</div>
+  <div class="col-md-5">
+    <img src="./assets/avatar.png" class="rounded-circle m-0" style="max-width:200px; max-height: 200px">
+  </div>
+  <div class="col-md-7 mt-3">
+    <div class="mt-3"><span class="font-weight-bold text-info">Username: </span>{{{username}}}</div>
+    <div class="mt-3"><span class="font-weight-bold text-info">First name: </span>{{{firstName}}}</div>
+    <div class="mt-3"><span class="font-weight-bold text-info">Last name: </span>{{{lastName}}}</div>
+  </div>
+
+</div></div>

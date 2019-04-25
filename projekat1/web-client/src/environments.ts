@@ -1,5 +1,5 @@
 export const environments = {
-  serverApiUrl: 'http://192.168.1.100:3000',
+  serverApiUrl: 'http://24.135.29.89:3000',
   usersResourceUrl: 'users',
   leaguesResourceUrl: 'leagues',
   matchesResourceUrl: 'matches',

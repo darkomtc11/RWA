@@ -2,15 +2,14 @@ import { dbService } from './dbService';
 import { environments } from '../environments';
 import { Observable, zip, combineLatest, from } from 'rxjs';
 import { map, filter, toArray, withLatestFrom, delay, combineAll, flatMap, concatMap } from 'rxjs/operators';
-import { Match } from '../models/match';
-import { Tournament } from '../models/tournament';
-import { tournamentService } from './tournamentService';
-import { League } from '../models/league';
-import { leagueService } from './leagueService';
+import { Match } from '../base-models/match';
+import { Tournament } from '../base-models/tournament';
+import { League } from '../base-models/league';
+import { MatchCard } from '../models/matchCard';
 
 class MatchService extends dbService<Match> {
 
-  constructor() {
+  constructor(private _matchType: typeof Match) {
     super(environments.matchesResourceUrl);
   }
 
@@ -24,7 +23,7 @@ class MatchService extends dbService<Match> {
 
   get(init: boolean = true): Observable<Match> {
     return super.get().pipe(concatMap(async m => {
-      let match = new Match(m as Match);
+      let match = new this._matchType(m as Match, this._matchType._template);
       await match.populateTournament();
       if (init)
         match.init();
@@ -34,7 +33,7 @@ class MatchService extends dbService<Match> {
 
   getById(id: number, init: boolean = true): Observable<Match> {
     return super.getById(id).pipe(concatMap(async m => {
-      let match = new Match(m as Match);
+      let match = new this._matchType(m as Match, this._matchType._template);
       await match.populateTournament();
       if (init)
         match.init();
@@ -44,7 +43,7 @@ class MatchService extends dbService<Match> {
 
   add(match: Match, init: boolean = true): Observable<Match> {
     return super.add(match).pipe(concatMap(async m => {
-      let match = new Match(m as Match);
+      let match = new this._matchType(m as Match, this._matchType._template);
       await match.populateTournament();
       if (init)
         match.init();
@@ -54,7 +53,7 @@ class MatchService extends dbService<Match> {
 
   updateById(id: number, match: Match, init: boolean = true, patch: boolean = true): Observable<Match> {
     return super.updateById(id, match, patch).pipe(concatMap(async m => {
-      let match = new Match(m as Match);
+      let match = new this._matchType(m as Match, this._matchType._template);
       await match.populateTournament();
       if (init)
         match.init();
@@ -67,4 +66,5 @@ class MatchService extends dbService<Match> {
   }
 }
 
-export const matchService = new MatchService();
+export const matchCardService = new MatchService(MatchCard);
+export const matchService = new MatchService(Match);

@@ -1,0 +1,809 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "darkomtc",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123321",
+      "email": "darkomtc11@gmail.com",
+      "loginToken": "11"
+    },
+    {
+      "id": 2,
+      "username": "user2",
+      "firstName": "first2",
+      "lastName": "last2",
+      "email": "user2@gmail.com",
+      "password": "123321",
+      "loginToken": "22"
+    },
+    {
+      "username": "darkomtc1",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123ASDasd",
+      "confirmPassword": "123ASDasd",
+      "loginToken": "5d3536fc-dbe4-4051-bb04-f0302d132220",
+      "id": 3
+    },
+    {
+      "id": 4,
+      "username": "darkomtc11",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123asdASD",
+      "confirmPassword": "123asdASD",
+      "loginToken": "a2ee2dba-2a4a-40a6-bd73-96470c91fbf1"
+    },
+    {
+      "id": -1,
+      "username": "darkomtc12ss",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123asdASD",
+      "confirmPassword": "123asdASD",
+      "loginToken": "b401f6d4-8d99-4110-aa58-5bb33b65f070"
+    },
+    {
+      "username": "darkomtc55",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123asdASd",
+      "confirmPassword": "123asdASd",
+      "loginToken": "5b74140d-e209-42ce-a8f7-e31ad8c85295",
+      "id": 5
+    },
+    {
+      "username": "darkomtc51",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "password": "123asdASD",
+      "confirmPassword": "123asdASD",
+      "loginToken": "e267257e-ae9b-4a1a-9ce7-6a5417f232e6",
+      "id": 6
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 7
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 8
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 9
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 10
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 11
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 12
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 13
+    }
+  ],
+  "leagues": [
+    {
+      "id": 1,
+      "name": "League 1",
+      "host": "ESEA"
+    },
+    {
+      "id": 2,
+      "name": "League 2",
+      "host": "Valve"
+    },
+    {
+      "id": 3,
+      "name": "League 3",
+      "host": "FACEIT"
+    }
+  ],
+  "tournaments": [
+    {
+      "id": 1,
+      "name": "something",
+      "format": 1,
+      "qualifier": false,
+      "leagueId": 1
+    },
+    {
+      "id": 2,
+      "name": "something different",
+      "format": 2,
+      "qualifier": true,
+      "leagueId": 1
+    },
+    {
+      "id": 3,
+      "name": "All stars",
+      "format": 3,
+      "qualifier": false,
+      "leagueId": 3
+    }
+  ],
+  "matches": [
+    {
+      "id": 1,
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "tim1",
+        "shortName": "t1",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "tim2",
+        "shortName": "t2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 2
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 3
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 4
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 5
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 6
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 7
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 8
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 9
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 10
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 11
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 12
+    },
+    {
+      "team1": {
+        "image": "https://cdn.freebiesupply.com/logos/large/2x/fnatic-logo-png-transparent.png",
+        "name": "fnatic",
+        "shortName": "fnt",
+        "players": [
+          "asd",
+          "asd2",
+          "asd3",
+          "asd4",
+          "asd5"
+        ]
+      },
+      "team2": {
+        "image": "https://www.logolynx.com/images/logolynx/89/89cf76702a0785ea5350a6dbc604369e.png",
+        "name": "G2 esports",
+        "shortName": "g2",
+        "players": [
+          "bce",
+          "bce2",
+          "bce3",
+          "bce4",
+          "bce5"
+        ]
+      },
+      "startTime": "2019-05-11T10:20:30Z",
+      "ended": false,
+      "team1Score": 16,
+      "team2Score": 9,
+      "finalFraction": 4,
+      "subNumber": 1,
+      "tournamentId": 1,
+      "leagueId": 1,
+      "id": 13
+    }
+  ]
+}

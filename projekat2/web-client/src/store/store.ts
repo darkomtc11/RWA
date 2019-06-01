@@ -2,9 +2,9 @@ import { combineReducers } from "redux";
 import { reportReducer } from "./reducers/reportReducer";
 import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga';
-import { takeLatest } from "@redux-saga/core/effects";
+import { takeLatest, all, fork } from "@redux-saga/core/effects";
 import { Report } from "../models/report";
-import { GET_FULL_REPORT, getFullReport, MAKE_TRANSACTION } from "./actions/actions";
+import { GET_FULL_REPORT, MAKE_TRANSACTION } from "./actions/actions";
 import { dbMakeTransaction, dbFullReport } from "./saga";
 import { composeWithDevTools } from 'redux-devtools-extension';
 
@@ -18,19 +18,26 @@ export const reducers = combineReducers({
 
 export function configureStore() {
   const sagaMiddleware = createSagaMiddleware();
-
-  const middlewares = applyMiddleware(sagaMiddleware);
-
-  const store = createStore(reducers, composeWithDevTools(middlewares));
+  const store = createStore(reducers, composeWithDevTools(applyMiddleware(sagaMiddleware)));
 
   sagaMiddleware.run(rootSaga);
 
   return store;
 }
 
-export function* rootSaga() {
+export function* reportSaga() {
   yield takeLatest(GET_FULL_REPORT, dbFullReport)
+}
+
+export function* transactionSaga() {
   yield takeLatest(MAKE_TRANSACTION, dbMakeTransaction)
+}
+
+export function* rootSaga(){
+  yield all([
+    fork(reportSaga),
+    fork(transactionSaga)
+  ])
 }
 
 export const store = configureStore();

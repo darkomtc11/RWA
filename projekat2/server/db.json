@@ -2,7 +2,7 @@
   "reports": [
     {
       "id": 1,
-      "availableFunds": 9999582439,
+      "availableFunds": 0,
       "transactions": [
         {
           "amount": 5000,
@@ -29,70 +29,16 @@
           "currentFunds": 800
         },
         {
-          "amount": 400,
-          "type": 2,
-          "date": "2019-06-01T17:00:10.201Z",
-          "currentFunds": 1200
-        },
-        {
-          "amount": -350,
+          "amount": -1337,
           "type": 0,
-          "date": "2019-06-01T17:00:18.267Z",
-          "currentFunds": 850
+          "date": "2019-06-01T19:12:04.162Z",
+          "currentFunds": -537
         },
         {
-          "amount": 10000000000,
+          "amount": 537,
           "type": 2,
-          "date": "2019-06-01T17:33:42.178Z",
-          "currentFunds": 10000000850
-        },
-        {
-          "amount": -55126,
-          "type": 0,
-          "date": "2019-06-01T17:35:35.110Z",
-          "currentFunds": 9999945724
-        },
-        {
-          "amount": -13,
-          "type": 1,
-          "date": "2019-06-01T17:36:12.117Z",
-          "currentFunds": 9999945711
-        },
-        {
-          "amount": -13,
-          "type": 0,
-          "date": "2019-06-01T17:36:15.496Z",
-          "currentFunds": 9999945698
-        },
-        {
-          "amount": 555,
-          "type": 2,
-          "date": "2019-06-01T17:37:09.509Z",
-          "currentFunds": 9999946253
-        },
-        {
-          "amount": 5555,
-          "type": 2,
-          "date": "2019-06-01T17:37:11.369Z",
-          "currentFunds": 9999951808
-        },
-        {
-          "amount": -123123,
-          "type": 1,
-          "date": "2019-06-01T17:37:13.226Z",
-          "currentFunds": 9999828685
-        },
-        {
-          "amount": -123123,
-          "type": 1,
-          "date": "2019-06-01T17:37:13.981Z",
-          "currentFunds": 9999705562
-        },
-        {
-          "amount": -123123,
-          "type": 1,
-          "date": "2019-06-01T17:37:14.602Z",
-          "currentFunds": 9999582439
+          "date": "2019-06-01T19:12:19.731Z",
+          "currentFunds": 0
         }
       ]
     }

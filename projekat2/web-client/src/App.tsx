@@ -1,24 +1,26 @@
 import React from 'react';
 import Menu from "./components/MenuComponent"
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.css'
+import './css/bootstrap.css'
 import './fontawesome/css/all.min.css'
 import { Container } from 'react-bootstrap';
 import { Route, BrowserRouter as Router } from 'react-router-dom';
 import Home from './components/HomeComponent';
-import Stats from './components/StatsComponent';
+import { store } from './store/store';
+import { Provider } from 'react-redux';
 
 const App: React.FC = () => {
   return (
-    <Router>
-      <Menu />
-      <Container>
+    <Provider store={store}>
+      <Router>
+        <Menu />
+        <Container>
 
-        <Route path="/" exact component={Home} />
-        <Route path="/stats" component={Stats} />
+          <Route path="/" exact component={Home} />
 
-      </Container>
-    </Router>
+        </Container>
+      </Router>
+    </Provider>
   );
 }
 

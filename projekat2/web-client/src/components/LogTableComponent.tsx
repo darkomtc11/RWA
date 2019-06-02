@@ -18,15 +18,15 @@ export default class LogTableComponent extends Component<Props, State> {
           <tr>
             <th>#</th>
             <th>Amount</th>
-            <th>Type</th>
-            <th>Date</th>
+            <th></th>
+            <th>Timestamp</th>
             <th>Current funds</th>
           </tr>
         </thead>
         <tbody>
           {this.props.transactions.map((x, i) =>
-            <tr key={i}>
-              <td>{i}</td>
+            <tr key={i+1}>
+              <td>{i+1}</td>
               <td>{x.amount}</td>
               <td className="text-center">
                 <LogTypeComponent type={x.type}/>

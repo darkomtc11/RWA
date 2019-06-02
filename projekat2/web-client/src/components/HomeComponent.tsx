@@ -1,5 +1,5 @@
 import React, { Component, Dispatch } from 'react'
-import { Row, Col, Button, InputGroup, FormControl, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Row, Col, Button, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Action } from 'redux';
 import { getFullReport, getReport, makeTransaction } from '../store/actions/actions';
 import { AppState } from '../store/store';
@@ -9,6 +9,7 @@ import { TransactionType } from '../models/transaction';
 import LogTable from './LogTableComponent';
 import CashStateComponent from './CashStateComponent';
 import ChangeTrackingProfileComponent from './ChangeTrackingProfileComponent';
+import { TransactionInputsComponent } from './TransactionInputsComponent';
 
 
 interface Props {
@@ -20,9 +21,6 @@ interface Props {
 }
 
 interface State {
-  addAmount: number;
-  removeAmount: number;
-  necessaryTransaction: boolean;
   dateFrom: Date;
   dateTo: Date;
 }
@@ -35,7 +33,7 @@ export class HomeComponent extends Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { necessaryTransaction: false, addAmount: 0, removeAmount: 0, dateFrom: undefined , dateTo: undefined }
+    this.state = { dateFrom: undefined, dateTo: undefined }
   }
   render() {
     return (
@@ -55,13 +53,11 @@ export class HomeComponent extends Component<Props, State> {
         </Col>
         <Col style={{ backgroundColor: "#fcfdff" }} md={6} className="p-0 pt-2 border-bottom">
           <div className="d-flex flex-column px-3">
-            <div className="text-center">
-              <label>Transaction log</label>
-            </div>
+           
 
             <Row className="justify-content-between">
               <Col xs={5}>
-                <Form.Control type="date" className="rounded-0" size="sm" onChange={(e) => { this.setState({ dateFrom: e.target.value }) }}  />
+                <Form.Control type="date" className="rounded-0" size="sm" onChange={(e) => { this.setState({ dateFrom: e.target.value }) }} />
               </Col>
               <Col xs={2} className="text-center mt-1">-</Col>
               <Col xs={5}>
@@ -80,48 +76,11 @@ export class HomeComponent extends Component<Props, State> {
             <label>Make transaction</label>
           </div>
           <div className="text-center">
-            <InputGroup className="mb-3 ">
-              <FormControl type="number" min="0" onChange={(e) => { this.setState({ addAmount: parseInt(e.target.value) }) }}
-                placeholder="Amount to add"
-                className="rounded-0"
-              />
-              <InputGroup.Append>
-                <Button variant="success" className="rounded-0 text-white" onClick={() => { this.props.addFunds(this.state.addAmount, this.props.report) }}>
-                  <i className="fas fa-plus-square"></i>
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
 
-            <InputGroup className="mb-3 rounded-0">
-              <InputGroup.Prepend className="rounded-0">
-
-
-                <OverlayTrigger key='bottom' placement='bottom'
-                  overlay={
-                    <Tooltip id={`tooltip-bottom`}>
-                      Necessary transaction
-                      </Tooltip>
-                  }>
-                  <InputGroup.Checkbox onChange={(e) => { this.setState({ necessaryTransaction: e.target.checked }) }} defaultChecked={this.state.necessaryTransaction} className="rounded-0" />
-
-                </OverlayTrigger>
-
-
-              </InputGroup.Prepend>
-              <FormControl type="number" min="0" onChange={(e) => { this.setState({ removeAmount: parseInt(e.target.value) }) }}
-                placeholder="Amount to remove"
-                className="rounded-0"
-              />
-              <InputGroup.Append>
-                <Button variant="secondary" className="rounded-0" onClick={() => { this.props.removeFunds(this.state.removeAmount, this.state.necessaryTransaction ? TransactionType.necessary : TransactionType.unnecessary, this.props.report); }}>
-                  <i className="fas fa-minus-square"></i>
-                </Button>
-              </InputGroup.Append>
-            </InputGroup>
-            <span className="small text-danger">Save your code: {localStorage.getItem("code")}</span>
+            <TransactionInputsComponent report={this.props.report} addFunds={this.props.addFunds} removeFunds={this.props.removeFunds} />
 
             <OverlayTrigger placement='bottom' overlay={<Tooltip id={`tooltip-bottom`}>Transactions and code will reset</Tooltip>}>
-              <Button block variant="primary" size="sm" className="rounded-0 mt-5" onClick={() => { localStorage.clear(); this.props.getFullReport()}}>Reset profile</Button>
+              <Button block variant="primary" size="sm" className="rounded-0 my-5" onClick={() => { localStorage.clear(); this.props.getFullReport() }}>Reset profile</Button>
             </OverlayTrigger>
 
           </div>
@@ -146,6 +105,4 @@ function mapStateToProps(state: AppState) {
   }
 }
 
-const connectedHome = connect(mapStateToProps, mapDispatchToProps)(HomeComponent);
-
-export default connectedHome;
+export default connect(mapStateToProps, mapDispatchToProps)(HomeComponent);

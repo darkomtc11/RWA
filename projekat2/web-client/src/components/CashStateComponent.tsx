@@ -13,7 +13,7 @@ export default class CashStateComponent extends Component<Props,any> {
   render() {
     return (
       <ListGroup className="text-center mb-3">
-        <ListGroup.Item variant="dark" className="rounded-0 py-0">Currently available:</ListGroup.Item>
+        <ListGroup.Item variant="dark" className="rounded-0 py-0">Current funds:</ListGroup.Item>
         <ListGroup.Item variant="success">
           <span className="mb-4 text-dark font-weight-bold">{this.props.availableFunds}</span>
         </ListGroup.Item>

@@ -8,8 +8,11 @@ export function reportReducer(state: Report = initialState, action: Action) {
   switch (action.type) {
     case GET_REPORT: {
       const { dateFrom, dateTo } = (action as GetReport);
-      const newState = state.initalizeFromTransactions(dateFrom, dateTo);
-      return newState;
+      if (dateFrom !== undefined && dateTo !== undefined) {
+        const newState = state.initalizeFromTransactions(dateFrom, dateTo);
+        return newState;
+      }
+      return state;
     }
     case CHANGE_STATE: {
       const { report } = (action as ChangeState);

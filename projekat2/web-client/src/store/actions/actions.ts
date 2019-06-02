@@ -6,6 +6,7 @@ export const GET_FULL_REPORT = "GET_FULL_REPORT"
 export const GET_REPORT = "GET_REPORT"
 export const CHANGE_STATE = "CHANGE_STATE";
 export const MAKE_TRANSACTION = "MAKE_TRANSACTION";
+export const CHECK_CODE = "CHECK_CODE";
 
 export interface GetFullReport extends Action {
 
@@ -53,5 +54,16 @@ export function makeTransaction(amount: number, transactionType: TransactionType
     transactionType: transactionType,
     report: report,
     type: MAKE_TRANSACTION
+  };
+}
+
+export interface CheckCode extends Action {
+  code: string
+}
+
+export function checkCode(code: string): CheckCode {
+  return {
+    code: code,
+    type: CHECK_CODE
   };
 }

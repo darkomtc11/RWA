@@ -2,7 +2,7 @@ import { Transaction, TransactionType } from "./transaction";
 import { Spendings } from "./spendings";
 
 export class Report implements IReport {
-  public id: number;
+  public id: string;
   public availableFunds: number;
   public totalSpendings:Spendings;
   public selectedSpendings:Spendings;
@@ -10,7 +10,7 @@ export class Report implements IReport {
   public selectedTransactions: Transaction[];
 
   public constructor() {
-    this.id = -1;
+    this.id = null;
     this.availableFunds = 0;
     this.totalSpendings = new Spendings();
     this.totalSpendings.necessarySpendings = 0;
@@ -49,7 +49,7 @@ export class Report implements IReport {
 }
 
 export interface IReport {
-  id: number;
+  id: string;
   availableFunds: number;
   transactions: Transaction[];
 }

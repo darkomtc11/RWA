@@ -8,12 +8,13 @@ import { Report } from '../models/report';
 import { TransactionType } from '../models/transaction';
 import LogTable from './LogTableComponent';
 import CashStateComponent from './CashStateComponent';
+import ChangeTrackingProfileComponent from './ChangeTrackingProfileComponent';
 
 
 interface Props {
   report: Report,
-  getFullReport: () => Report,
-  getReport: (dateFrom: Date, dateTo: Date) => Report,
+  getFullReport: () => void,
+  getReport: (dateFrom: Date, dateTo: Date) => void,
   removeFunds: (amount: number, type: TransactionType, report: Report) => void,
   addFunds: (amount: number, report: Report) => void
 }
@@ -34,14 +35,14 @@ export class HomeComponent extends Component<Props, State> {
 
   constructor(props) {
     super(props);
-    this.state = { necessaryTransaction: false, addAmount: 0, removeAmount: 0, dateFrom: new Date(), dateTo: new Date() }
+    this.state = { necessaryTransaction: false, addAmount: 0, removeAmount: 0, dateFrom: undefined , dateTo: undefined }
   }
   render() {
     return (
 
       <Row>
         <Col style={{ backgroundColor: "#fcfdff" }} className="pt-5 border" md={3}>
-
+          <ChangeTrackingProfileComponent />
           <div className="small text-center font-weight-bold">
             <label>Cash state</label>
           </div>
@@ -60,7 +61,7 @@ export class HomeComponent extends Component<Props, State> {
 
             <Row className="justify-content-between">
               <Col xs={5}>
-                <Form.Control type="date" className="rounded-0" size="sm" onChange={(e) => { this.setState({ dateFrom: e.target.value }) }} />
+                <Form.Control type="date" className="rounded-0" size="sm" onChange={(e) => { this.setState({ dateFrom: e.target.value }) }}  />
               </Col>
               <Col xs={2} className="text-center mt-1">-</Col>
               <Col xs={5}>
@@ -112,15 +113,20 @@ export class HomeComponent extends Component<Props, State> {
                 className="rounded-0"
               />
               <InputGroup.Append>
-                <Button variant="secondary" className="rounded-0" onClick={() => { this.props.removeFunds(this.state.removeAmount, this.state.necessaryTransaction ? TransactionType.necessary : TransactionType.unnecessary, this.props.report); console.log(this.state.necessaryTransaction) }}>
+                <Button variant="secondary" className="rounded-0" onClick={() => { this.props.removeFunds(this.state.removeAmount, this.state.necessaryTransaction ? TransactionType.necessary : TransactionType.unnecessary, this.props.report); }}>
                   <i className="fas fa-minus-square"></i>
                 </Button>
               </InputGroup.Append>
             </InputGroup>
+            <span className="small text-danger">Save your code: {localStorage.getItem("code")}</span>
+
+            <OverlayTrigger placement='bottom' overlay={<Tooltip id={`tooltip-bottom`}>Transactions and code will reset</Tooltip>}>
+              <Button block variant="primary" size="sm" className="rounded-0 mt-5" onClick={() => { localStorage.clear(); this.props.getFullReport()}}>Reset profile</Button>
+            </OverlayTrigger>
+
           </div>
         </Col>
       </Row>
-
     )
   }
 }

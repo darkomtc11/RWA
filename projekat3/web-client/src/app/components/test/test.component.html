@@ -1,0 +1,10 @@
+<div class="right" *ngIf="tests">
+
+  <h3>Tests</h3>
+  <button (click)="addTest()">test</button>
+  <div *ngFor="let t of tests | async; let i = index" (click)="removeTest(i)">
+    {{ t.foo }} {{ t.bar }}
+  </div>
+  
+
+</div>

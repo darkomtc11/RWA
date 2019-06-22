@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "jlQDOKD",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "email": "darkomtc11@gmail.com",
+      "username": "darkomtc",
+      "password": "123321"
+    },
+    {
+      "username": "darkomtc1",
+      "firstName": "ads",
+      "lastName": "asd",
+      "email": "das@asd",
+      "password": "123asdASD",
+      "confirmPassword": "123asdASD",
+      "id": "9Nr9mWE"
+    },
+    {
+      "username": "darkomtc2",
+      "firstName": "Darko",
+      "lastName": "Mitic",
+      "email": "asd@asd",
+      "password": "123asdASD",
+      "confirmPassword": "123asdASD",
+      "id": "8sK8w5w"
+    }
+  ]
+}

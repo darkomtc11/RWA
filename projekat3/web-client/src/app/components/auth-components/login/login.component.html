@@ -1,41 +1,39 @@
-<div class="py-5">
+<div class="py-5" *ngIf="authObs | async as auth">
   <div class="row">
-    <div class="col-md-6 mx-auto">
-      <div class="card rounded-0">
-        <div class="card-header rounded-0 border-dark">
-          <div class="card-title"><h4>Login <small>or <a
-                routerLink="/register">register</a></small></h4></div>
-          <!-- <small class="text-danger" *ngIf="hasError">{{errorMessage}}</small> -->
-          <small *ngIf="!hasError">Provide username and password</small>
-        </div>
-        <div class="card-body">
-          <form class="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
-            <mat-card-content>
+    <div class="col-md-4 mx-auto">
+      <mat-card class="rounded-0">
+        <mat-card-title>
+          <h4>Login <small>or <a routerLink="/register">register</a></small></h4>
+          <small class="text-danger" *ngIf="auth.errorMessage">{{auth.errorMessage}}</small>
+          <small *ngIf="!auth.errorMessage">Provide username and password</small>
+        </mat-card-title>
 
-              <mat-form-field class="d-flex flex-column">
-                <input matInput formControlName="username" placeholder="Username"
-                  [class.is-invalid]="username.invalid && (username.touched || showInvalid)" type="text">
-                <mat-error class="text-danger" *ngIf="username.errors?.required && (username.touched || showInvalid)">
-                  Username is required<br></mat-error>
-              </mat-form-field>
+        <form class="form" [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onSubmit()">
+          <mat-card-content>
 
-              <mat-form-field class="d-flex flex-column">
-                <input matInput formControlName="password" placeholder="Password"
-                  [class.is-invalid]="password.invalid && (password.touched || showInvalid)" type="password"
-                  class="rounded-0">
-                <mat-error *ngIf="password.errors?.required && (password.touched || showInvalid)">
-                  Password is required<br></mat-error>
-              </mat-form-field>
+            <mat-form-field class="d-flex flex-column">
+              <input matInput formControlName="username" placeholder="Username"
+                [class.is-invalid]="username.invalid && (username.touched || auth.showInvalid)" type="text">
+              <mat-error class="text-danger"
+                *ngIf="username.errors?.required && (username.touched || auth.showInvalid)">
+                Username is required<br></mat-error>
+            </mat-form-field>
 
-            </mat-card-content>
-            <mat-card-actions class="d-flex flex-row-reverse ">
+            <mat-form-field class="d-flex flex-column">
+              <input matInput formControlName="password" placeholder="Password"
+                [class.is-invalid]="password.invalid && (password.touched || auth.showInvalid)" type="password"
+                class="rounded-0">
+              <mat-error *ngIf="password.errors?.required && (password.touched || auth.showInvalid)">
+                Password is required<br></mat-error>
+            </mat-form-field>
 
-              <button type="submit" (click)="showInvalidFields()"
-                class="rounded-0 btn btn-primary">Login</button>
-            </mat-card-actions>
-          </form>
-        </div>
-      </div>
+          </mat-card-content>
+          <mat-card-actions class="d-flex flex-row-reverse ">
+
+            <button mat-flat-button color="primary" type="submit" (click)="showInvalid()" class="rounded-0">Login</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
     </div>
   </div>
 </div>

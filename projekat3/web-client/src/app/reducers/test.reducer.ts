@@ -2,11 +2,11 @@ import { Action } from '@ngrx/store'
 import { Test } from '../models/test.models'
 import * as TestActions from './../actions/test.actions'
 
-export interface State {
+export interface TestState {
   tests:Test[]
 }
 
-const initialState: State = {tests:[{
+const initialState: TestState = {tests:[{
   foo: 'baz1',
   bar: 'baz1'
 }, {
@@ -17,7 +17,7 @@ const initialState: State = {tests:[{
   bar: 'baz3'
 },]}
 
-export function testReducer(state: State = initialState, action: TestActions.Actions) {
+export function testReducer(state: TestState = initialState, action: TestActions.Actions) {
   switch (action.type) {
     case TestActions.ADD_TEST:
       return [...state.tests, action.payload];

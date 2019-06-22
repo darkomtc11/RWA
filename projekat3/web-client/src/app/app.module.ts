@@ -12,6 +12,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './effects/auth.effects';
 import { LoginComponent } from './components/auth-components/login/login.component';
 import { RegisterComponent } from './components/auth-components/register/register.component';
+import { HttpClientModule } from '@angular/common/http';
+import { authReducer } from './reducers/auth.reducer';
 
 @NgModule({
   declarations: [
@@ -23,12 +25,13 @@ import { RegisterComponent } from './components/auth-components/register/registe
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ test: testReducer }),
+    StoreModule.forRoot({ test: testReducer, auth: authReducer }),
     StoreDevtoolsModule.instrument({
       maxAge:5
     }),
     MaterialBundleModule,
     EffectsModule.forRoot([AuthEffects]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

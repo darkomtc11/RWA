@@ -1,10 +1,15 @@
-<div class="right" *ngIf="tests">
+<div class="right" *ngIf="testObs | async as testState">
 
   <h3>Tests</h3>
   <button (click)="addTest()">test</button>
-  <div *ngFor="let t of tests | async; let i = index" (click)="removeTest(i)">
-    {{ t.foo }} {{ t.bar }}
+
+  <div *ngIf="authObs | async as authState">
+    asdasdas
+    <div *ngIf="!authState.isLoggedIn">LOGGED IN</div>
   </div>
-  
+  <div *ngFor="let t of testState.tests; let i = index" (click)="removeTest(i)">
+    {{ t.foo }} {{ t.bar }} </div>
+
+
 
 </div>

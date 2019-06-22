@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Test } from '../../models/test.models';
 import { AppState } from './../../app.state';
 import * as TestActions from "./../../actions/test.actions"
+import { TestState } from 'src/app/reducers/test.reducer';
+import { AuthState } from 'src/app/reducers/auth.reducer';
 
 @Component({
   selector: 'app-test',
@@ -12,10 +14,12 @@ import * as TestActions from "./../../actions/test.actions"
 })
 export class TestComponent implements OnInit {
 
-  tests: Observable<Test[]>;
+  testObs: Observable<TestState>;
+  authObs: Observable<AuthState>;
 
   constructor(private store: Store<AppState>) {
-    this.tests = store.select('test');
+    this.testObs = store.select('test');
+    this.authObs = store.select('auth');
   }
 
   addTest(){

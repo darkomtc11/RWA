@@ -1,9 +1,12 @@
+import { Booking } from './flight.models';
+
 export interface User {
   id: string;
   firstName: string;
   lastName: string;
   email: string;
   username: string;
+  bookedFlights: Booking[]
 }
 
 export interface LoginUser {

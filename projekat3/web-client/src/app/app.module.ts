@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { StoreModule } from "@ngrx/store";
-import {StoreDevtoolsModule} from "@ngrx/store-devtools"
+import { StoreDevtoolsModule } from "@ngrx/store-devtools"
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,23 +14,27 @@ import { LoginComponent } from './components/auth-components/login/login.compone
 import { RegisterComponent } from './components/auth-components/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { authReducer } from './reducers/auth.reducer';
+import { reducers } from './reducers';
+import { FlightListComponent } from './components/flight-components/flight-list/flight-list.component';
+import { FlightEffects } from './effects/flight.effects';
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    FlightListComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({ test: testReducer, auth: authReducer }),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
-      maxAge:5
+      maxAge: 5
     }),
     MaterialBundleModule,
-    EffectsModule.forRoot([AuthEffects]),
+    EffectsModule.forRoot([AuthEffects, FlightEffects]),
     HttpClientModule
   ],
   providers: [],

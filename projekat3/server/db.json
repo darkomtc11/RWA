@@ -10,21 +10,62 @@
     },
     {
       "username": "darkomtc1",
-      "firstName": "ads",
-      "lastName": "asd",
-      "email": "das@asd",
+      "firstName": "darko",
+      "lastName": "mitic",
+      "email": "asda@asd",
       "password": "123asdASD",
       "confirmPassword": "123asdASD",
-      "id": "9Nr9mWE"
+      "id": "26RvU4e"
+    }
+  ],
+  "flights": [
+    {
+      "id": 1,
+      "airline": "test",
+      "from": "from 1",
+      "to": "to 1",
+      "seats": [
+        {
+          "type": 0,
+          "number": 5
+        },
+        {
+          "type": 1,
+          "number": 5
+        },
+        {
+          "type": 2,
+          "number": 5
+        },
+        {
+          "type": 3,
+          "number": 5
+        }
+      ]
     },
     {
-      "username": "darkomtc2",
-      "firstName": "Darko",
-      "lastName": "Mitic",
-      "email": "asd@asd",
-      "password": "123asdASD",
-      "confirmPassword": "123asdASD",
-      "id": "8sK8w5w"
+      "id": 2,
+      "airline": "test2",
+      "from": "from 2",
+      "to": "to 3",
+      "seats": [
+        {
+          "type": 0,
+          "number": 6
+        },
+        {
+          "type": 1,
+          "number": 5
+        },
+        {
+          "type": 2,
+          "number": 3
+        },
+        {
+          "type": 3,
+          "number": 5
+        }
+      ]
     }
   ]
 }

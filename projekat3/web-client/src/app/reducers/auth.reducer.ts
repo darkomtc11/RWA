@@ -15,7 +15,8 @@ const initialState: AuthState = {
     firstName: '',
     lastName: '',
     email: '',
-    username: ''
+    username: '',
+    bookedFlights:[]
   },
   errorMessage: '',
   showInvalid: false

@@ -17,7 +17,7 @@ export class AuthService {
       return throwError("User not found.");
     }))
   }
-
+  
   login(user: LoginUser): Observable<User | string> {
     return Observable.create((obs: Subscriber<User | string>) => {
       this._http.get<User[]>(`${env.serverUrl}/users?username=${user.username}&password=${user.password}`).subscribe(res => {

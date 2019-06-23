@@ -55,6 +55,16 @@ export class AuthEffects {
     }));
   }));
 
+  @Effect({ dispatch: false })
+  RegisterSuccess: Observable<AuthActions.RegisterSuccess> = this._actions.pipe(
+    ofType(AuthActions.REGISTER_SUCCESS),
+    tap((action) => {
+      console.log(action);
+      localStorage.setItem('token', action.payload.id);
+      this._router.navigate(['']);
+    })
+  );
+
   @Effect()
   Check: Observable<AuthActions.CheckSuccess | AuthActions.CheckFailure> = this._actions.pipe(ofType(AuthActions.CHECK), map((action: AuthActions.Check) => action.payload), switchMap(payload => {
     return this._auth.getById(payload).pipe(map(user => {

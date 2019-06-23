@@ -1,7 +1,9 @@
 <div *ngIf="authObs | async as auth">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <span>Projekat 3</span>
+      <button routerLink="/" mat-button color="accent" class="rounded-0 mr-1" style="font-size: 120%">
+        Flight booking
+      </button>
       <div class="d-flex w-100 justify-content-end" *ngIf="!auth.isLoggedIn">
         <button mat-flat-button class="rounded-0 mr-1" routerLink="/login">Login</button>
         <button mat-flat-button color="accent" class="rounded-0 float-right" routerLink="/register">Register</button>
@@ -11,7 +13,7 @@
         <button mat-icon-button class="rounded-0 mr-1">
           <mat-icon>account_circle</mat-icon>
         </button>
-        <button mat-icon-button class="rounded-0 mr-1" (click)="logout()"> 
+        <button mat-icon-button class="rounded-0 mr-1" (click)="logout()">
           <mat-icon>power_settings_new</mat-icon>
         </button>
       </div>

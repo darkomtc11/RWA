@@ -55,13 +55,13 @@ export const selectFiltered = createSelector(
     return allFlights.filter(x => {
       let ret = true;
 
-      if (!filter.from || x.from.includes(filter.from)) {
+      if (!filter.from || x.from.toLowerCase().includes(filter.from.toLowerCase())) {
         ret = ret && true;
       }
       else {
         ret = false;
       }
-      if (!filter.to || x.to.includes(filter.to)) {
+      if (!filter.to || x.to.toLowerCase().includes(filter.to.toLowerCase())) {
         ret = ret && true;
       } else {
         ret = false;

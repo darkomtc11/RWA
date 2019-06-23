@@ -87,8 +87,13 @@ export class RegisterComponent implements OnInit {
     this._store.dispatch(new AuthActions.ResetErrorMessage())
   }
 
+  showInvalid(){
+    this._store.dispatch(new AuthActions.ShowInvalid());
+  }
+
   onSubmit(): void {
     const payload: RegisterUser = this.registerForm.value;
+    payload.bookedFlights = [];
     this._store.dispatch(new AuthActions.Register(payload));
   }
 }

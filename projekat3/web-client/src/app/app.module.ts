@@ -17,6 +17,11 @@ import { authReducer } from './reducers/auth.reducer';
 import { reducers } from './reducers';
 import { FlightListComponent } from './components/flight-components/flight-list/flight-list.component';
 import { FlightEffects } from './effects/flight.effects';
+import { UserEffects } from './effects/user.effects';
+import { HomeComponent } from './components/home/home.component';
+import { SeatBookingComponent } from './components/flight-components/seat-booking/seat-booking.component';
+import { UserComponent } from './components/user/user.component';
+import { NewFlightComponent } from './components/flight-components/new-flight/new-flight.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +29,11 @@ import { FlightEffects } from './effects/flight.effects';
     TestComponent,
     LoginComponent,
     RegisterComponent,
-    FlightListComponent
+    FlightListComponent,
+    HomeComponent,
+    SeatBookingComponent,
+    UserComponent,
+    NewFlightComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +43,7 @@ import { FlightEffects } from './effects/flight.effects';
       maxAge: 5
     }),
     MaterialBundleModule,
-    EffectsModule.forRoot([AuthEffects, FlightEffects]),
+    EffectsModule.forRoot([AuthEffects, FlightEffects, UserEffects]),
     HttpClientModule
   ],
   providers: [],

@@ -1,0 +1,18 @@
+<form class="form w-100 mt-4" [formGroup]="bookingForm" (ngSubmit)="bookingForm.valid && onSubmit()">
+  <div class="d-flex justify-content-center">
+    <div class="col-9 col-md-6 col-lg-4 col-xl-3">
+      <mat-card-content>
+        <mat-form-field class="d-flex flex-column">
+          <input matInput formControlName="number" placeholder="Number of seats"
+            [class.is-invalid]="number.invalid && (number.touched || showInvalid)" type="number">
+          <mat-error class="text-danger" *ngIf="number.errors?.max && (number.touched || showInvalid)">
+            Seats number must be less than {{max}}.<br></mat-error>
+          <mat-error class="text-danger" *ngIf="number.errors?.min && (number.touched || showInvalid)">
+            Seats number must be larger than 0.<br></mat-error>
+        </mat-form-field>
+      </mat-card-content>
+    </div>
+  </div>
+  <button mat-flat-button color="accent" type="submit" (click)="showInvalidFields()"
+    class="rounded-0 btn-block">Book</button>
+</form>

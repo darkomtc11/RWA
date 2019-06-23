@@ -1,7 +1,7 @@
 <div *ngIf="authObs | async as auth">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <button routerLink="/" mat-button color="accent" class="rounded-0 mr-1" style="font-size: 120%">
+      <button routerLink="/" mat-button class="rounded-0 mr-1" style="font-size: 120%">
         Flight booking
       </button>
       <div class="d-flex w-100 justify-content-end" *ngIf="!auth.isLoggedIn">
@@ -10,9 +10,12 @@
       </div>
       <div class="d-flex w-100 justify-content-end align-items-center" *ngIf="auth.isLoggedIn">
         <small class="mt-1">{{auth.user.username}}</small>
-        <button mat-icon-button class="rounded-0 mr-1">
+        <button mat-icon-button class="rounded-0 mr-1" routerLink="/user">
           <mat-icon>account_circle</mat-icon>
         </button>
+        <button mat-icon-button class="rounded-0 mr-1" routerLink="/new">
+            <mat-icon>add_circle</mat-icon>
+          </button>
         <button mat-icon-button class="rounded-0 mr-1" (click)="logout()">
           <mat-icon>power_settings_new</mat-icon>
         </button>
@@ -22,5 +25,4 @@
   </mat-toolbar>
 
   <router-outlet></router-outlet>
-  <app-flight-list></app-flight-list>
 </div>

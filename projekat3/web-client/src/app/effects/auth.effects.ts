@@ -8,6 +8,7 @@ import { tap, map, switchMap, catchError } from 'rxjs/operators';
 import { AuthService } from '../services/auth.service';
 import * as AuthActions from './../actions/auth.actions'
 import { User } from '../models/user.models';
+import { UserService } from '../services/user.service';
 
 
 @Injectable()
@@ -16,8 +17,10 @@ export class AuthEffects {
   constructor(
     private _actions: Actions,
     private _auth: AuthService,
+    private _user: UserService,
     private _router: Router,
   ) { }
+
 
   @Effect()
   Login: Observable<AuthActions.LoginSuccess | AuthActions.LoginFailure> = this._actions.pipe(ofType(AuthActions.LOGIN), map((action: AuthActions.Login) => action.payload), switchMap(payload => {
@@ -67,7 +70,7 @@ export class AuthEffects {
 
   @Effect()
   Check: Observable<AuthActions.CheckSuccess | AuthActions.CheckFailure> = this._actions.pipe(ofType(AuthActions.CHECK), map((action: AuthActions.Check) => action.payload), switchMap(payload => {
-    return this._auth.getById(payload).pipe(map(user => {
+    return this._user.getById(payload).pipe(map(user => {
       if (user) {
         return new AuthActions.CheckSuccess(user);
       }

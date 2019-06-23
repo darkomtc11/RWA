@@ -6,7 +6,51 @@
       "lastName": "Mitic",
       "email": "darkomtc11@gmail.com",
       "username": "darkomtc",
-      "password": "123321"
+      "password": "123321",
+      "bookedFlights": [
+        {
+          "flightId": 1,
+          "seats": {
+            "number": 5,
+            "type": 1
+          }
+        },
+        {
+          "flightId": 1,
+          "seats": {
+            "number": 3,
+            "type": 3
+          }
+        },
+        {
+          "flightId": 2,
+          "seats": {
+            "number": 12,
+            "type": 2
+          }
+        },
+        {
+          "flightId": 1,
+          "seats": {
+            "number": 2,
+            "type": 1
+          }
+        },
+        {
+          "flightId": 3,
+          "seats": {
+            "number": 2,
+            "type": 0
+          }
+        },
+        {
+          "flightId": 3,
+          "seats": {
+            "number": 3,
+            "type": 0
+          }
+        }
+      ]
     },
     {
       "username": "darkomtc1",
@@ -15,7 +59,8 @@
       "email": "asda@asd",
       "password": "123asdASD",
       "confirmPassword": "123asdASD",
-      "id": "26RvU4e"
+      "id": "26RvU4e",
+      "bookedFlights": []
     }
   ],
   "flights": [
@@ -24,22 +69,23 @@
       "airline": "test",
       "from": "from 1",
       "to": "to 1",
+      "date": "2012-04-23T18:25:43.511Z",
       "seats": [
         {
           "type": 0,
-          "number": 5
+          "number": 0
         },
         {
           "type": 1,
-          "number": 5
+          "number": 34
         },
         {
           "type": 2,
-          "number": 5
+          "number": 0
         },
         {
           "type": 3,
-          "number": 5
+          "number": 27
         }
       ]
     },
@@ -48,24 +94,50 @@
       "airline": "test2",
       "from": "from 2",
       "to": "to 3",
+      "date": "2012-04-23T18:25:43.511Z",
       "seats": [
         {
           "type": 0,
-          "number": 6
+          "number": 11
         },
         {
           "type": 1,
-          "number": 5
+          "number": 15
         },
         {
           "type": 2,
-          "number": 3
+          "number": 18
         },
         {
           "type": 3,
-          "number": 5
+          "number": 23
         }
       ]
+    },
+    {
+      "airline": "Serbia airlines",
+      "from": "Serbia",
+      "to": "Bulgaria",
+      "seats": [
+        {
+          "number": 45,
+          "type": 0
+        },
+        {
+          "number": 38,
+          "type": 1
+        },
+        {
+          "number": 30,
+          "type": 2
+        },
+        {
+          "number": 20,
+          "type": 3
+        }
+      ],
+      "date": "2019-06-24T15:00:00.000Z",
+      "id": 3
     }
   ]
 }

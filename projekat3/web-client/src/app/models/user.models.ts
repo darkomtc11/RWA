@@ -6,7 +6,7 @@ export interface User {
   lastName: string;
   email: string;
   username: string;
-  bookedFlights: Booking[]
+  bookedFlights: Booking[];
 }
 
 export interface LoginUser {
@@ -20,4 +20,5 @@ export interface RegisterUser {
   email: string;
   username: string;
   password: string;
+  bookedFlights: Booking[];
 }

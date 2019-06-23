@@ -11,12 +11,6 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
 
   constructor(private _http: HttpClient) { }
-
-  getById(id: string): Observable<User> {
-    return this._http.get<User>(`${env.serverUrl}/users/${id}`).pipe(catchError(err => {
-      return throwError("User not found.");
-    }))
-  }
   
   login(user: LoginUser): Observable<User | string> {
     return Observable.create((obs: Subscriber<User | string>) => {

@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store'
 import { Flight, Seats, Filter as FilterModel, Booking } from '../models/flight.models';
 import { Update } from '@ngrx/entity';
+import { User } from '../models/user.models';
 
 export const FETCH = '[FLIGHT] Fetch';
 export const FETCH_SUCCESS = '[FLIGHT] Fetch success';
@@ -35,7 +36,7 @@ export class FetchFailure implements Action {
 export class Add implements Action {
   readonly type = ADD;
 
-  constructor(public payload: Flight) { }
+  constructor(public payload: Partial<Flight>) { }
 }
 
 export class AddSuccess implements Action {
@@ -71,7 +72,7 @@ export class RemoveFailure implements Action {
 export class Book implements Action {
   readonly type = BOOK;
 
-  constructor(public payload: Booking) { }
+  constructor(public payload: Flight) { }
 }
 
 export class BookSuccess implements Action {

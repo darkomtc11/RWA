@@ -1,3 +1,5 @@
+import { User } from './user.models';
+
 export interface Flight {
   id: number;
   airline: string;
@@ -13,7 +15,7 @@ export interface Seats {
 }
 
 export interface Booking {
-  id: number;
+  flightId: number;
   seats: Seats
 }
 

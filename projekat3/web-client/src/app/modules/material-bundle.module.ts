@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { MatButtonModule, MatInputModule, MatCheckboxModule, MatIconModule, MatFormFieldModule, MatCardModule, MatSlideToggleModule, MatSelectModule, MatOptionModule, MatToolbarModule } from '@angular/material';
+import { MatButtonModule, MatInputModule, MatCheckboxModule, MatIconModule, MatFormFieldModule, MatCardModule, MatSlideToggleModule, MatSelectModule, MatOptionModule, MatToolbarModule, MatTabsModule, MatListModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -20,7 +20,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatOptionModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     CommonModule,
@@ -37,7 +41,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     MatOptionModule,
     MatButtonModule,
     MatToolbarModule,
-    MatIconModule
+    MatIconModule,
+    MatTabsModule,
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
 })
 export class MaterialBundleModule { }

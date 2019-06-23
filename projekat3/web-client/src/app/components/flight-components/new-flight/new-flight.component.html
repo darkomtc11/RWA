@@ -1,0 +1,104 @@
+<div class="py-5">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <mat-card class="rounded-0">
+        <mat-card-title>
+          <h4>New flight</h4>
+          <small class="text-danger" *ngIf="errorMessage">{{errorMessage}}</small>
+          <small *ngIf="!errorMessage">Provide flight info</small>
+        </mat-card-title>
+
+        <form class="form" [formGroup]="newFlightForm" (ngSubmit)="newFlightForm.valid && onSubmit()">
+          <mat-card-content>
+
+            <mat-form-field class="d-flex flex-column">
+              <input matInput formControlName="airline" placeholder="Airline"
+                [class.is-invalid]="airline.invalid && (airline.touched || showInvalid)" type="text">
+              <mat-error class="text-danger" *ngIf="airline.errors?.required && (airline.touched || showInvalid)">
+                Airline is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="d-flex flex-column">
+              <input matInput formControlName="from" placeholder="Start destination"
+                [class.is-invalid]="from.invalid && (from.touched || showInvalid)" type="text">
+              <mat-error class="text-danger" *ngIf="from.errors?.required && (from.touched || showInvalid)">
+                Start destination is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="d-flex flex-column">
+              <input matInput formControlName="to" placeholder="End destination"
+                [class.is-invalid]="to.invalid && (to.touched || showInvalid)" type="text">
+              <mat-error class="text-danger" *ngIf="to.errors?.required && (to.touched || showInvalid)">
+                End destination is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="d-flex flex-column">
+              <input matInput [matDatepicker]="picker" placeholder="Date" formControlName="date"
+                [class.is-invalid]="date.invalid && (date.touched || showInvalid)">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error class="text-danger" *ngIf="date.errors?.required && (date.touched || showInvalid)">
+                Date is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6 no-gutters">
+              <input matInput formControlName="hours" placeholder="Hours"
+                [class.is-invalid]="hours.invalid && (hours.touched || showInvalid)" type="number">
+              <mat-error class="text-danger" *ngIf="hours.errors?.required && (hours.touched || showInvalid)">
+                Hours are required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6">
+              <input matInput formControlName="minutes" placeholder="Minutes"
+                [class.is-invalid]="minutes.invalid && (minutes.touched || showInvalid)" type="number">
+              <mat-error class="text-danger" *ngIf="minutes.errors?.required && (minutes.touched || showInvalid)">
+                Minutes are required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6">
+              <input matInput formControlName="firstClassSeats" placeholder="First class seats"
+                [class.is-invalid]="firstClassSeats.invalid && (firstClassSeats.touched || showInvalid)"
+                type="number">
+              <mat-error class="text-danger"
+                *ngIf="firstClassSeats.errors?.required && (firstClassSeats.touched || showInvalid)">
+                Number of first class seats is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6">
+              <input matInput formControlName="businessClassSeats" placeholder="Business class seats"
+                [class.is-invalid]="businessClassSeats.invalid && (businessClassSeats.touched || showInvalid)"
+                type="number">
+              <mat-error class="text-danger"
+                *ngIf="businessClassSeats.errors?.required && (businessClassSeats.touched || showInvalid)">
+                Number of business class seats is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6">
+              <input matInput formControlName="premiumClassSeats" placeholder="Premium class seats"
+                [class.is-invalid]="premiumClassSeats.invalid && (premiumClassSeats.touched || showInvalid)"
+                type="number">
+              <mat-error class="text-danger"
+                *ngIf="premiumClassSeats.errors?.required && (premiumClassSeats.touched || showInvalid)">
+                Number of premium class seats is required<br></mat-error>
+            </mat-form-field>
+
+            <mat-form-field class="col-6">
+              <input matInput formControlName="economyClassSeats" placeholder="Economy class seats"
+                [class.is-invalid]="economyClassSeats.invalid && (economyClassSeats.touched || showInvalid)"
+                type="number">
+              <mat-error class="text-danger"
+                *ngIf="economyClassSeats.errors?.required && (economyClassSeats.touched || showInvalid)">
+                Number of economy class seats is required<br></mat-error>
+            </mat-form-field>
+
+          </mat-card-content>
+          <mat-card-actions class="d-flex flex-row-reverse ">
+
+            <button mat-flat-button color="primary" type="submit" (click)="showInvalidFields()"
+              class="rounded-0">Create</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </div>
+  </div>
+</div>

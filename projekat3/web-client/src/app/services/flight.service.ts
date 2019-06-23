@@ -11,7 +11,7 @@ export class FlightService {
 
   constructor(private _http: HttpClient) { }
 
-  add(flight: Flight): Observable<Flight> {
+  add(flight: Partial<Flight>): Observable<Flight> {
     return this._http.post<Flight>(`${env.serverUrl}/flights`, flight);
   }
 

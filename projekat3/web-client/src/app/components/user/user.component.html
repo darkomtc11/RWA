@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center" *ngIf="authObs | async as auth">
+
+  <div class="row col-xl-6 col-lg-8 col-md-9 col-9 no-gutters mt-5">
+    <div class="col-xl-6 col-lg-12">
+      <h3>User profile</h3>
+      <mat-list >
+        <mat-list-item><span class="mr-1">First name: </span> {{auth.user.firstName}}</mat-list-item>
+        <mat-list-item><span class="mr-1">Last name: </span> {{auth.user.lastName}}</mat-list-item>
+        <mat-list-item><span class="mr-1">Email: </span> {{auth.user.email}}</mat-list-item>
+        <mat-list-item><span class="mr-1">Username: </span> {{auth.user.username}}</mat-list-item>
+      </mat-list>
+    </div>
+    <div class="col-xl-6 col-lg-12">
+        <h3>Booked seats</h3>
+        <mat-list >
+            <mat-list-item *ngFor="let bf of auth.user.bookedFlights">{{bf.seats.number}} {{parseType(bf.seats.type)}} seat/s for flight #{{bf.flightId}}</mat-list-item>
+          </mat-list>
+    </div>
+  </div>
+</div>

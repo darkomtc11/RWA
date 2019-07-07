@@ -34,6 +34,7 @@ class MatchService extends dbService<Match> {
   getById(id: number, init: boolean = true): Observable<Match> {
     return super.getById(id).pipe(concatMap(async m => {
       let match = new this._matchType(m as Match, this._matchType._template);
+      //console.log(match);
       await match.populateTournament();
       if (init)
         match.init();

@@ -13,33 +13,25 @@ export class MatchDisplay extends Partial {
     team2: { name: '', players: [], shortName: '', image: '' },
     startTime: new Date(),
     finalFraction: 1,
-    ended: true,
+    ended: false,
     team1Score: 1,
     team2Score: 2,
     tournamentId: 0,
-    tournament: undefined,
+    tournament: {},
     leagueId: 0,
-    league: undefined
+    league: {
+      host: ""
+    }
   };
   constructor() {
     super(MatchDisplay._template.cloneNode(true) as HTMLElement);
-    this.load();
+    //this.load();
   }
 
-  load() {
-
+  async load() {
     let id = document.location.pathname.split('/')[2];
-    console.log(id);
     if (id) {
-
-      matchService.getById(parseInt(id), false).subscribe(x => {
-        this.match = x;
-        this.refreshMoustache();
-      }, err=>{
-        router.navigateTo('/', true, true);
-      })
+      this.match = await matchService.getById(parseInt(id)).toPromise()
     }
-
-
   }
 }

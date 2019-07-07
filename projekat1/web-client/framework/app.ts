@@ -15,19 +15,19 @@ import { MatchDisplay } from "../src/public/views/matchDisplay/matchDisplay";
 //import { PARTIALS } from '../src/PARTIALS';
 
  const PARTIALS = [
-  { item: Root, url: "./root.html" },
-  { item: Error, url: "./error.html" },
-  { item: Login, url: "./login.html" },
-  { item: Register, url: "./register.html" },
-  { item: Start, url: "./start.html" },
-  { item: User, url: "./user.html" },
-  { item: League, url: "./league.html" },
-  { item: Tournament, url: "./tournament.html" },
-  { item: Match, url: "./match.html" },
-  { item: LeagueCard, url: "./leagueCard.html" },
-  { item: TournamentCard, url: "./tournamentCard.html" },
-  { item: MatchCard, url: "./matchCard.html" },
-  { item: MatchDisplay, url: "./matchDisplay.html" },
+  { item: Root, url: "/root.html" },
+  { item: Error, url: "/error.html" },
+  { item: Login, url: "/login.html" },
+  { item: Register, url: "/register.html" },
+  { item: Start, url: "/start.html" },
+  { item: User, url: "/user.html" },
+  { item: League, url: "/league.html" },
+  { item: Tournament, url: "/tournament.html" },
+  { item: Match, url: "/match.html" },
+  { item: LeagueCard, url: "/leagueCard.html" },
+  { item: TournamentCard, url: "/tournamentCard.html" },
+  { item: MatchCard, url: "/matchCard.html" },
+  { item: MatchDisplay, url: "/matchDisplay.html" },
 
 ]
 
@@ -46,7 +46,7 @@ class AppInit {
       }));
     })
 
-    return Promise.all(promisses);
+    Promise.all(promisses);
   }
 }
 

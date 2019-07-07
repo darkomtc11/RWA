@@ -31,21 +31,18 @@ class Router {
     const r = new Root();
     r.init();
 
-
-
     document.querySelector('root').innerHTML = '';
     document.querySelector('root').appendChild(r.template);
   }
 
-  private loadPage(path, forceHistory) {
+  private async loadPage(path, forceHistory) {
     if (forceHistory)
       window.history.pushState({ path: path }, document.title, path);
 
-
     let newPath = path.split('?')[0];
     const p = this.routePartial(newPath);
+    await p.load();
     p.init();
-
 
     document.querySelector('partial-region').innerHTML = '';
     p.template.childNodes.forEach(el => {
@@ -54,8 +51,7 @@ class Router {
   }
 
   private routePartial(path): Partial {
-
-    let page = navigationMap.find(x=>path.startsWith(x.path));
+    let page = navigationMap.find(x=>path.includes(x.path));
 
     if (!page) {
       return new Error('404 Page not found');

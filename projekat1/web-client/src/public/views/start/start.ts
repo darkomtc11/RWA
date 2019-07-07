@@ -9,10 +9,6 @@ import { zip, Observable, interval, timer } from 'rxjs';
 import { TournamentCard } from '../../../models/tournamentCard';
 import { MatchCard } from '../../../models/matchCard';
 import { LeagueCard } from '../../../models/leagueCard';
-import { League } from '../../../base-models/league';
-import { Tournament } from '../../../base-models/tournament';
-import { router } from '../../../../framework/router';
-
 
 export class Start extends Partial {
 
@@ -25,10 +21,7 @@ export class Start extends Partial {
     this.load();
   }
 
-  load() {
-
-    
-
+  async load() {
     zip(leagueCardService.get().pipe(map(x => x as LeagueCard), toArray()),
       tournamentCardService.get().pipe(map(x => x as TournamentCard), toArray()),
       matchCardService.get().pipe(map(x => x as MatchCard), toArray()))
@@ -45,8 +38,8 @@ export class Start extends Partial {
 
         L.forEach(x => {
             x.events.loadTournaments = (event) => {
-              this.loadTournaments(x.getTournaments());
-              this.loadMatches(x.getMatches());
+              this.loadTournaments(x.getTournaments().pipe(map(x=>x as TournamentCard)));
+              this.loadMatches(x.getMatches().pipe(map(x=>x as MatchCard)));
             }
 
           x.loadAttrEvClick();
@@ -55,7 +48,7 @@ export class Start extends Partial {
 
         T.forEach(x => {
           x.events.loadMatches = (event) => {
-            this.loadMatches(x.getMatches());
+            this.loadMatches(x.getMatches().pipe(map(x=>x as MatchCard)));
           }
 
           x.loadAttrEvClick();
@@ -72,7 +65,7 @@ export class Start extends Partial {
     this.divTournaments.innerHTML = "";
     tournaments.subscribe(x => {
       x.events.loadMatches = (event) => {
-        this.loadMatches(x.getMatches());
+        this.loadMatches(x.getMatches().pipe(map(x=>x as MatchCard)));
       }
 
       x.loadAttrEvClick();

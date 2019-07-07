@@ -5,6 +5,7 @@ import { tournamentService } from "../services/tournamentService";
 import { Observable } from "rxjs";
 import { Team } from "../interfaces/team";
 import { iMatch } from "../interfaces/iMatch";
+import { leagueService } from "../services/leagueService";
 
 export class Match extends Partial implements iMatch {
   id: number;
@@ -18,8 +19,6 @@ export class Match extends Partial implements iMatch {
   team2Score: number;
   tournamentId: number;
   tournament: Tournament;
-  leagueId: number;
-  league: League;
 
 
   constructor(match: Match, template: HTMLElement) {

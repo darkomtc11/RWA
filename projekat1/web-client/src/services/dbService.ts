@@ -1,6 +1,6 @@
 import { environments } from "../environments";
 import { Observable, from } from 'rxjs';
-import { flatMap, concatMap, switchMap } from "rxjs/operators";
+import { switchMap } from "rxjs/operators";
 
 export abstract class dbService<T> {
   constructor(protected _resource) {
@@ -9,7 +9,7 @@ export abstract class dbService<T> {
 
   get(): Observable<T> {
 
-    return from(fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json())).pipe(switchMap<Observable<T>, Observable<T>>(x => x));
+    return from(fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json())).pipe(switchMap<Promise<T>, Observable<T>>(x => from(x)));
 
     // return Observable.create(obs => {
     //   fetch(`${environments.serverApiUrl}/${this._resource}`).then(response => response.json()).then(data => {

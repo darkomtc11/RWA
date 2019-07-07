@@ -1,13 +1,42 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-      <small>({{{match.team1.shortName}}})</small>
-      {{{match.team1.name}}} 
-      AGAINST
-      {{{match.team2.name}}}
-      <small>({{{match.team2.shortName}}})</small>
+<div class="container ">
+  <div class="card rounded-0">
+    <div class="card-header bg-info text-light d-flex align-items-center flex-column font-weight-bold rounded-0">
+      <div>
+        <span class="small">({{{ match.team1.shortName}}})</span>
+        {{{ match.team1.name}}} <span class="small">vs</span> {{{ match.team2.name}}}
+        <span class="small">({{ match.team2.shortName}}})</span>
+      </div>
     </div>
-    <div class="col-md-3"></div>
+    <div class="card-body row no-gutters rounded-0">
+      <div class="col-md-3">
+        <img style="width:100%" src="{{ match.team1.image }}">
+        <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+          <div>{{{match.team1.players[0]}}}</div>
+          <div>{{{match.team1.players[1]}}}</div>
+          <div>{{{match.team1.players[2]}}}</div>
+          <div>{{{match.team1.players[3]}}}</div>
+          <div>{{{match.team1.players[4]}}}</div>
+        </div>
+      </div>
+      <div class="col-md-6 d-flex align-items-center flex-column">
+        <div if='!match.tournament.qualifier'>
+          {{{ match.finalFraction==4?'QUARTERFINALS':match.finalFraction==2?'SEMIFINALS':match.finalFraction==1?'FINALS':''}}}
+          ({{{ match.subNumber}}}/{{{ match.tournament.format}}})</div>
+        <div if='match.tournament.qualifier'>QUALIFIERS MATCH ({{{ match.subNumber}}}/{{{ match.tournament.format}}})
+        </div>
+        <div>{{{match.ended?team1Score+':'+match.team2Score:'TBD'}}}</div>
+        <div>{{{helper.dateTimePresenter(match.startTime)}}}</div>
+      </div>
+      <div class="col-md-3">
+        <img style="width:100%" src="{{ match.team2.image }}">
+        <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+          <div>{{{match.team2.players[0]}}}</div>
+          <div>{{{match.team2.players[1]}}}</div>
+          <div>{{{match.team2.players[2]}}}</div>
+          <div>{{{match.team2.players[3]}}}</div>
+          <div>{{{match.team2.players[4]}}}</div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

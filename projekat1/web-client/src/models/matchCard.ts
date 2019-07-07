@@ -16,7 +16,6 @@ export class MatchCard extends Match {
   events = {
     openMatch: (event) => {
       event.target.innerHTML = this.id;
-      console.log(this.id);
     }
   }
 

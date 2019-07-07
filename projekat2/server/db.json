@@ -2,7 +2,7 @@
   "reports": [
     {
       "id": "1PkXaFw",
-      "availableFunds": 1513803,
+      "availableFunds": 1514047,
       "transactions": [
         {
           "amount": 123,
@@ -63,6 +63,18 @@
           "type": 2,
           "date": "2019-06-02T13:58:07.099Z",
           "currentFunds": 1513803
+        },
+        {
+          "amount": 500,
+          "type": 2,
+          "date": "2019-07-06T16:05:38.794Z",
+          "currentFunds": 1514303
+        },
+        {
+          "amount": -256,
+          "type": 1,
+          "date": "2019-07-06T16:05:57.092Z",
+          "currentFunds": 1514047
         }
       ]
     },
@@ -70,6 +82,11 @@
       "availableFunds": 0,
       "transactions": [],
       "id": "uBq5URF"
+    },
+    {
+      "availableFunds": 0,
+      "transactions": [],
+      "id": "i-zT9tr"
     }
   ]
 }

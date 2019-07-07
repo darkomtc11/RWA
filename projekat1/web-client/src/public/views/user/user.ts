@@ -9,17 +9,14 @@ export class User extends Partial {
 
   constructor() {
     super(User._template.cloneNode(true) as HTMLElement, '/user');
-    this.load();
+    //this.load();
   }
 
-  load() {
-    userService.getByToken(localStorage.getItem('token')).then(user => {
-      
-      this.username = user[0].username;
-      this.firstName = user[0].firstName;
-      this.lastName = user[0].lastName;
-      this.refreshMoustache();
-    })
+  async load() {
+    let users = await userService.getByToken(localStorage.getItem('token'));
+    this.username = users[0].username;
+    this.firstName = users[0].firstName;
+    this.lastName = users[0].lastName;
   }
 
 }

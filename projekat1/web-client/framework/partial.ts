@@ -14,6 +14,10 @@ export class Partial {
 
   }
 
+  async load(){
+
+  }
+
   init() {
     this.loadMustache();
     this.loadAttrIf();
@@ -30,9 +34,9 @@ export class Partial {
   loadMustache() {
     let html = this._template.innerHTML;
 
-    //let reg = /\{(.*?)\}/;//{{{ xxxxxx.yy.z }}}
+    //let reg = /\{(.*?)\}/;//
     //let reg = /(?<=% \{\{\{ )(.*)(?= \}\}\} )/
-    let reg = /{{{?\s*.*?\s*}}}///{{{asd}}}
+    let reg = /{{{?\s*.*?\s*}}}///{{{xx.yyyy.z}}}
     let m;
     do {
       m = reg.exec(html);
@@ -49,9 +53,12 @@ export class Partial {
     reg = /{{?\s*.*?\s*}}///{{ asd }}
     do {
       m = reg.exec(html);
+
+     
       if (m) {
         let prop = m[0].slice(3, -3).trim();//.replace(/\s/g, '');
 
+        let x = saferEval(prop, this);
         html = html.replace(m[0], saferEval(prop, this));
       }
     }
@@ -92,9 +99,10 @@ export class Partial {
     elems.forEach(el => {
       let urlPath = el.attributes.getNamedItem('navigate-to').value;
       el.style.cursor = 'pointer';
-      el.addEventListener('click', () => {
+
+      fromEvent(el, 'click').subscribe(()=>{
         router.navigateTo(urlPath);
-      });
+      })
     });
   }
 
